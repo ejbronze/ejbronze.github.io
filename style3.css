@@ -23,3 +23,7 @@
   /* Positioning */
   margin-right: 20px;
 }
+#MyName {
+    font-family: 'Montez', cursive;
+    color: #488930;
+}
