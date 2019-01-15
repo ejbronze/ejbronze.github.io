@@ -3,10 +3,9 @@
 }
 
 body {
-    background-color: white;
+    background-color: #C4C4C1;
     font-size: 24px;
     line-height: 32px;
-    font-family: Arial, Helvetica, sans-serif
 }
 
 #footer {
@@ -29,44 +28,51 @@ body {
     z-index: 2;
     }
 
-#orangebox {
-    height: 50px;
-    width: 450px;
-    background-color: rgb(255, 81, 0);
-    margin: -42 10 10 0;
-    z-index: 1;
-}
-
 #navbar{ 
     width: 100%;
     height: 50px;
     margin: 0;
-    background: repeating-linear-gradient(
-    -65deg,
-    white 0px,
-    white 20px,
-    black 20px,
-    black 40px 
-    );
+    background-color: grey;
     position: fixed;
-    top: 100px;
+    top: 30px;
+    left: 0px;
 }
 
-#navicon {
-    background-color: white;
+#myname {
+    font-family: 'Montez', cursive;
+    font-size: 40px;
+    position: fixed;
+    margin: 0px;
+    top: 32px;
+    left: 60px;
+}
+#navname {
+    position: fixed;
+    top: 30px;
+    left: 35px;
+    background-color: orange;
+    width: 230px;
     height: 50px;
-    width: 28.5px;
-    position: relative;
-    top: 0;
-    right: 28;
 }
 
 #profilepic {
-    
+    position: fixed;
+    top: 120px;
+    left: 50px;
+
+}
+
+#icon {
+    background-color:orange;
+    position: fixed;
+    height: 230px;
+    width: 230px;
+    top: 105px;
+    left: 35px;
 }
 
 #navbuttons{
-    background-color: black;
+    background-color: greenk;
     position: fixed;
     height: 50px;
     width: 450px;
@@ -87,16 +93,6 @@ body {
     right: 1;
 }
 
-
-#icon {
-    background-color: black;
-    position: fixed;
-    height: 200px;
-    width: 200px;
-    text-align: center;
-    top: 20px;
-    left: 100;
-}
 
 #icontext {
     text-align: center;
