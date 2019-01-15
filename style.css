@@ -1,78 +1,152 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    /* Box-model */
-    padding: 0;
-  
-    /* Positioning */
-    margin: 0;
-    font-family: Georgia, "Times New Roman", Times, serif;
-  
-    /* Typography */
-    font-size: 18px;
-    line-height: 150%;
-    color: #333;
-  
-    /* Visual */
-    background: #efeee7;
-  }
-  
-  header {
-    background: #d21034;
-  }
-  
-  h1 {
-    /* Box-model */
-    padding: 20px 0;
-  
-    /* Positioning */
-    margin: 0;
-    margin-bottom: 20px;
-    font-size: 28px;
-  
-    /* Typography */
-    color: #eee;
-    text-align: center;
-  
-    /* Visual */
-    background: #333;
-  }
-  
-  h2 {
+    background-color: white;
     font-size: 24px;
-  }
-  
-  a {
-    color: #d21034;
-  }
-  
-  .container {
-    /* Box-model */
-    width: 1024px;
-  
-    /* Positioning */
-    margin: 0 auto;
-  }
-  
-  #main-bio,
-  #contact-info,
-  #bio-image {
-    float: left;
-  }
-  
-  #main-bio {
-    width: 70%;
-  }
-  
-  #contact-info {
-    width: 30%;
-  }
-  
-  #bio-image {
-    /* Box-model */
-    width: 200px;
+    line-height: 32px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#footer {
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    bottom: 10;
+    z-index: 0;
+}
+
+#footertext {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    bottom: 20;
+    text-align: right;
+    margin-right: 400;
+    margin-top: 10;
+    z-index: 2;
+    }
+
+#orangebox {
+    height: 50px;
+    width: 450px;
+    background-color: rgb(255, 81, 0);
+    margin: -42 10 10 0;
+    z-index: 1;
+}
+
+#navbar{ 
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    background: repeating-linear-gradient(
+    -65deg,
+    white 0px,
+    white 20px,
+    black 20px,
+    black 40px 
+    );
+    position: fixed;
+    top: 100px;
+}
+
+#navicon {
+    background-color: white;
+    height: 50px;
+    width: 28.5px;
+    position: relative;
+    top: 0;
+    right: 28;
+}
+
+#profilepic {
+    
+}
+
+#navbuttons{
+    background-color: black;
+    position: fixed;
+    height: 50px;
+    width: 450px;
+    text-align: center;
+    margin: 90 auto;
+    right: 0;
+}
+
+#navlink {
+    list-style-type: none;
+    display: inline;
+    color: white;
+    padding: 0px 14px 0px 11px;
+    top: -20;
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    right: 1;
+}
+
+
+#icon {
+    background-color: black;
+    position: fixed;
     height: 200px;
-  
-    /* Positioning */
-  
-    margin-right: 20px;
-  }
-  
+    width: 200px;
+    text-align: center;
+    top: 20px;
+    left: 100;
+}
+
+#icontext {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 85px 0px;
+    color: white;
+}
+
+.wrapper {
+    margin: 10px;
+    padding: 20px;
+}
+
+#content {
+    width: 680px;
+    margin: 0 auto 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 45px;
+    margin-top: 175px;
+    margin-bottom: 20px;
+    color:black;
+}
+
+#pbody {
+    color: rgb(255, 81, 0);
+    font-weight: bold;
+    text-align: justify;
+    margin: auto;
+}
+
+#relative {
+    background-color: #eee;
+    position: relative;
+    padding: 50px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+#absolute {
+    background: #999;
+    text-align: center;
+    position: absolute;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    right: -10;
+}
+
