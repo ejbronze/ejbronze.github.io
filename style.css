@@ -43,7 +43,7 @@ body {
   position: fixed;
   margin: 0px;
   top: 20px;
-  left: 60px;
+  left: 40px;
   color: #f3e598;
 }
 #navname {
@@ -72,6 +72,12 @@ body {
   margin-top: 35px;
   float: right;
   font-size: 20px;
+}
+
+#contactbtn button:hover {
+  background-color: green; /* Green background */
+  border: 1px solid #4caf50; /* Green border */
+  color: white; /* White text */
 }
 
 .underline {
