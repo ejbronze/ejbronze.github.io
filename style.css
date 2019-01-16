@@ -64,8 +64,8 @@ body {
 }
 
 #contactbtn button {
-  background-color: #4caf50; /* Green background */
-  border: 1px solid green; /* Green border */
+  background-color: #629fb8; /* Green background */
+  border: 1px solid rgb(77, 132, 146); /* Green border */
   color: white; /* White text */
   padding: 10px 24px;
   cursor: pointer; /* Pointer/hand icon */
@@ -75,8 +75,8 @@ body {
 }
 
 #contactbtn button:hover {
-  background-color: green; /* Green background */
-  border: 1px solid #4caf50; /* Green border */
+  background-color: rgb(77, 132, 146); /* Green background */
+  border: 1px solid #629fb8; /* Green border */
   color: white; /* White text */
 }
 
