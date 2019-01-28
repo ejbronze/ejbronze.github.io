@@ -1,114 +1,65 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background-image: url(https://github.com/ejbronze/ejbronze.github.io/blob/master/Images/Blurcloud.jpg?raw=true);
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-size: 24px;
-  line-height: 32px;
-}
-
-#footer {
-  height: 50px;
-  width: 100%;
-  background-color: rgba(91, 91, 99, 0.486);
-  position: fixed;
-  bottom: 0%;
-  left: 0%;
-}
-
-#footertext {
-  color: rgba(255, 255, 255, 0.822);
-  font-weight: bold;
-  font-size: 20px;
-  bottom: 20;
-  text-align: center;
-}
-
-#navbar {
-  width: 100%;
-  height: 80px;
-  margin: 0;
-  background-color: rgba(255, 255, 255, 0.678);
-  position: fixed;
-  top: 0px;
-  left: 0px;
-}
-
 #myname {
-  font-family: "Fjalla One", sans-serif;
-  font-size: 40px;
-  position: fixed;
-  margin: 0px;
-  top: 20px;
-  left: 40px;
-  color: #000000;
-  text-shadow: 2px 2px #ffffff;
-}
-#navname {
-  position: fixed;
-  top: 30px;
-  left: 35px;
-  width: 230px;
-  height: 50px;
+  font-family: "Major Mono Display", monospace;
+  color: white;
+  text-shadow: 3px 4px #0092fe;
 }
 
 #profilepic {
-  position: static; /* position: fixed; */
-  margin-top: 180px;
-  margin-left: 40px;
-  border: solid 10px white;
-  width: 220px;
-  height: 220px;
+  width: 284px;
+  height: 284px;
+  margin: auto;
+  display: block;
 }
 
-#contactbtn button {
-  background-color: #629fb8; /* Green background */
-  border: 2px solid rgb(0, 0, 0); /* Green border */
-  color: white; /* White text */
-  padding: 10px 24px;
-  cursor: pointer; /* Pointer/hand icon */
-  margin-top: 35px;
-  float: right;
-  font-size: 20px;
+.jumbotron {
+  border: solid 10px #0092fe;
+  height: 300px;
 }
 
-#contactbtn button:hover {
-  background-color: rgb(77, 132, 146); /* Green background */
-  border: 2px solid #444e52; /* Green border */
-  color: white; /* White text */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  border: 8px solid #0092fe;
+  border-radius: 5px;
 }
 
-.underline {
-  text-decoration: none;
-}
-
-#aboutmebox {
-  font-size: 30px;
-  font-family: "Fredericka the Great", cursive;
-  background-color: #757a7e;
-  width: 220px;
-  height: 50px;
-  margin-left: 40px;
-  margin-top: 0px;
-  position: fixed;
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
   text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: dodgerblue;
   color: white;
-  border: black solid 2px;
-  padding: 8px;
+  transform: rotateY(180deg);
 }
-
-#paragraphs {
-  font-size: 18px;
-  text-align: center;
-  line-height: 28px;
-  font-family: "Montserrat", sans-serif;
-  background-color: aliceblue;
-  /* position: relative; */
-  margin-left: 300px;
-  margin-top: -280px;
-  width: 930px;
-  height: 270px;
+.jumbotron {
+  background-color: lightgrey !important;
 }

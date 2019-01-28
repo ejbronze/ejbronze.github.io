@@ -1,69 +1,92 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <title>Main Page</title>
-    <link rel="stylesheet" type="text/css" href="reset.css" />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <!--Import Google font-->
-    <linkhref="https://fonts.googleapis.com/css?family=Montez|Fredericka+the+Great" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
-  </head>
 
-  <body>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <title>HomePage</title>
+</head>
 
-      <div id="navbar">
-        <div id="navbuttons">
-          <div id="navname"><h1 id="myname">Edwin Jaquez</h1></div>
+<body>
+    <!--Navbar-->
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <!--The brand, or name of the page-->
+        <a class="navbar-brand" href="index.html">
+            <span id="myname">ejbronze.github.io</span>
+        </a>
+        <!--The gouping for the buttons-->
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="https://www.linkedin.com/in/ejaquez/"><button type="button" class="btn btn-primary">LinkedIn</button>
+            </a>
+            <a href="https://github.com/ejbronze"><button type="button" class="btn btn-primary">GitHub</button>
+            </a>
+            <a href="About.html"><button type="button" class="btn btn-primary">About</button>
+            </a>
+            <a href="contact.html"><button type="button" class="btn btn-primary">Contact</button>
+            </a>
         </div>
-        <div id="contactbtn">
-            <a class="underline" href="mailto:erjaquez@gmail.com?Subject=Message from portfolio page">
-                <button type="button">Email</button>
-            </a>
-        
-            <a class="underline" href="https://github.com/ejbronze">
-                <button type="button">GitHub</button>
-            </a>
-        
-            <a class="underline" href="ejbronze.github.io">
-                <button type=button">Portfolio</button>
-            </a>
+    </nav>
+    <!--Navbar-->
 
-            <a class="underline" href="https://www.linkedin.com/in/ejaquez/">
-                <button type=button">LinkedIn</button>
-            </a>
-        
-        </div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <!--Divider containing the navigation bar & buttons-->
+            <div class="col-md-12">
 
-      <div id="profilepic">
-        <img
-          src="https://media.licdn.com/dms/image/C5103AQHHtaVNiCPzIQ/profile-displayphoto-shrink_200_200/0?e=1552521600&v=beta&t=v0boX7qS32D_DqTskF1F5uANxChcgBwsD-4qmj0RsmA"
-          alt="Bio Image"
-          id="bio-image"
-        />
-      </div>
 
-      <div id="content">
-            <div id="aboutmebox">
-                <h1 id="aboutmetext">About Me</h1>
-            </div>
-            <div id="paragraphs">
-                <p>
-          Not only am I learning about the web and all of it's inner and outer workings, I'm also learning Italian on
-          <a href="www.duolingo.com">Duolingo.com</a>. I'm teaching myself how to play the guitar. 
-                </p>
-                <br>
-                <p>
-          I recently joined Columbia University- Engineering, for an intense coding bootcamp,
-          where I'll be learning full-stack development, and preparing myself to
-          start a new career in the tech industy!
-                </p>
             </div>
         </div>
+        <br />
+        <br />
 
-  </body>
 
-  <footer>
-    <div id="footer"><div id="footertext">&copy;2019</div></div>
-  </footer>
+        <!--Second Row-->
+        <div class="row">
+
+            <!--Divider with my profile photo-->
+            <div class="col-md-4">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img id="profilepic" class="img-fluid shadow-lg p-3 mb-5" src="https://media.licdn.com/dms/image/C5103AQHHtaVNiCPzIQ/profile-displayphoto-shrink_200_200/0?e=1552521600&v=beta&t=v0boX7qS32D_DqTskF1F5uANxChcgBwsD-4qmj0RsmA"
+                                alt="Profile Photo">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Edwin Jaquez</h1>
+                            <p>Computer Science Teacher</p>
+                            <p>Going Places</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Jumbotron with my about me-->
+            <div class="col-md-8">
+                <div class="jumbotron">
+                    <!--Homework Gallery-->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small fixed-bottom bg-dark">
+        <div class="footer-copyright text-white text-center py-3">© 2019 Copyright:
+            <a class="text-white" href="#">ejbronze.github.io</a>
+        </div>
+    </footer>
+    <!-- Footer -->
+</body>
+
 </html>
