@@ -5,150 +5,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
     </script>
-    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>HomePage</title>
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
     <!--Navbar-->
-    <nav class="navbar sticky-top navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-dark">
         <!--The brand, or name of the page-->
-        <a class="navbar-brand" href="index.html">
-            <span id="myname">ejbronze.github.io</span>
+        <a class="navbar-brand ml-4" href="index.html">
+            <span id="myname">"Eddie"</span>
         </a>
         <!--The gouping for the buttons-->
         <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="https://www.linkedin.com/in/ejaquez/"><button type="button" class="btn btn-primary">LinkedIn</button>
+            <a href="https://www.linkedin.com/in/ejaquez/" target="_blank"><button type="button"
+                    class="btn btn-outline-light ml-2">LinkedIn</button>
             </a>
-            <a href="https://github.com/ejbronze"><button type="button" class="btn btn-primary">GitHub</button>
+            <a href="https://github.com/ejbronze" target="_blank"><button type="button"
+                    class="btn btn-outline-light ml-2">GitHub</button>
             </a>
-            <a href="about.html"><button type="button" class="btn btn-primary">About</button>
+            <a href="projects.html"><button type="button" class="btn btn-outline-light ml-2">Projects</button>
             </a>
-            <a href="contact.html"><button type="button" class="btn btn-primary">Contact</button>
+            </a>
+            <a href="contact.html"><button type="button" class="btn btn-outline-light ml-2">Contact</button>
             </a>
         </div>
     </nav>
     <!--Navbar-->
 
+    <!--Page Content-->
     <div class="container">
-        <div class="row">
-            
-        </div>
-        <br />
-        <br />
-
-
-        <!--Second Row-->
-        <div class="row">
-
-            <!--Divider with my profile photo-->
-            <div class="col-md-3 col-lg-3 offset-md-3 offset-sm-2 offset-lg-0">
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img id="profilepic" class="img-fluid shadow-lg p-3 mb-5" src="https://media.licdn.com/dms/image/C5103AQHHtaVNiCPzIQ/profile-displayphoto-shrink_200_200/0?e=1552521600&v=beta&t=v0boX7qS32D_DqTskF1F5uANxChcgBwsD-4qmj0RsmA"
-                                alt="Profile Photo"/>
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>Edwin Jaquez</h1>
-                            <p>Computer Science Teacher</p>
-                            <p>Going Places</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="row mx-auto">
+            <div class="col col-lg-12">
+                <img src="media/images/headshot.jpeg" class="img-fluid"/>
             </div>
-            <div class="col-lg-1"><br></div>
-            <!--Jumbotron with Homework assignment links-->
-            <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
-                <div class="jumbotron">
-                    <!--Homework Gallery-->
-                    <!--Homework Gallery-->
-                    <div class="container gallery-container">
-                        <p id="homework" class="text-center">Homework</p>
-                    
-                        <p class="page-description text-center">
-                            Coding Bootcamp Assignments
-                        </p>
-                    
-                        <div class="tz-gallery">
-                            <!--First Row-->
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                <div class="btn-group">
-                                    <!--First HW Assignment-->
-                                        <a class="lightbox" href=" https://ejbronze.github.io/Initial-portfolio/">
-                                            <button class="btn btn-outline-primary">First-Portfolio</button>
-                                        </a>   
-
-                                    <!--End first HW Assignment-->
-                                    <!--Second HW Assignment-->
-
-                                        <a class="lightbox" href="https://ejbronze.github.io/Responsive-Portfolio/"> 
-                                            <button class="btn btn-outline-primary">Media-Query</button>
-                                        </a>
-
-                                        <a class="lightbox" href="https://ejbronze.github.io/Bootstrap-Portfolio/">
-                                            <button class="btn btn-outline-primary"> Bootstrap-Page</button>
-                                        </a>
-
-                                    <!--End Assignment-->
-                                    <!--Third HW Assignment-->
-
-                                        <a class="lightbox" href="https://ejbronze.github.io/Psychic-Game/">
-                                            <button class="btn btn-outline-primary">Psychic-Game</button>
-                                        </a>
-                                        
-                                    <!--End Third HW Assignment-->
-                                    <!--Fourth HW Assignment-->
-
-                                        <a class="lightbox" href="https://ejbronze.github.io/unit-4-game/">
-                                            <button class="btn btn-outline-primary">Gem-Collector</button>
-                                        </a>
-
-                                    <!--End Fourth HW Assignment-->
-                                    <!--Week 6-->
-
-                                        <a class="lightbox" href="https://ejbronze.github.io/TriviaGame/">
-                                            <button class="btn btn-outline-primary">NYC-Trivia</button>
-                                        </a>
-
-                                    <!--Week 7-->
-                                
-                                        <a class="lightbox" href="https://ejbronze.github.io/gifTastic/">
-                                            <button class="btn btn-outline-primary">gifTastic-Game</button>
-                                        </a>
-
-                                    <!--Week 8-->
-                                
-                                        <!-- <a class="lightbox" href="#">
-                                            <button class="btn btn-outline-primary">ASSIGNMENT NAME</button>
-                                        </a> -->
-
-                                    <!--End-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+    </br>
+        <div class="row mx-auto" id="banner">
+            <div class="col col-lg-12" id="autotyper">
+                <h1>Hi, my name is Eddie.</h1>
+                <h2>I am a<span class="txt-type" data-wait="1000" data-words='[" teacher.", " learner.", " developer.", " creator.", " designer."]'></span></h2>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="page-footer font-small fixed-bottom bg-dark">
-        <div class="footer-copyright text-white text-center py-3">© 2019 Copyright:
-            <a class="text-white" href="#">ejbronze.github.io</a>
+    <footer class="page-footer font-small fixed-bottom mb-3">
+        <div class="container text-white text-center">
+            <p>Home Page</p>
         </div>
     </footer>
     <!-- Footer -->
+    <script src="main.js"></script>
 </body>
 
 </html>
