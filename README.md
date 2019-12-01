@@ -1,3 +1,4 @@
-# ejbronze.github.io
+# newportfolio
+Template for new and improved portfolio
 
-This site is currently under development and is a work in progress.
+This site showcases my professional history in both Web Development and Education.
