@@ -236,6 +236,7 @@ header a:hover{
 .categories {
 	padding-bottom: 30px;
 	text-align: center;
+
 }
 ul.cat li {
 	display: inline-block;
@@ -243,11 +244,13 @@ ul.cat li {
 ol.type li {
 	display: inline-block;
 	margin-left: 20px;
+	margin-bottom: 30px;
 }
 ol.type li a {
 	/* border: 1px solid #777; */
 	/* color: #555; */
-	padding: 8px 20px;
+	padding: 10px 20px;
+	
 
 	/* color: #fff;
 	text-shadow: black 0px 0px 6px;
