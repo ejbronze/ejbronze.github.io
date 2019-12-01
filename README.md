@@ -1,4 +1,18 @@
-# newportfolio
+# Portfolio Website
 Template for new and improved portfolio
 
-This site showcases my professional history in both Web Development and Education.
+- This site showcases
+    - Education
+        - Web Development
+        - STEAM
+        - Typing
+        - Robotics
+        - Computer Science
+            - Scratch block programming
+            - 3D Printing
+    - Full Stack Web Development
+        - HTML
+        - CSS
+        - JavaScript
+
+[GitHub Page](https://ejbronze.github.io/)
