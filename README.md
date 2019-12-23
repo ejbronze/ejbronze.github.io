@@ -16,3 +16,4 @@ Template for new and improved portfolio
         - JavaScript
 
 [GitHub Page](https://ejbronze.github.io/)
+12.2019
