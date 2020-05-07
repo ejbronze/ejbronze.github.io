@@ -17,4 +17,5 @@ Template for new and improved portfolio
 
 [GitHub Page](https://ejbronze.github.io/)
 
+*Updates: NONE
 
