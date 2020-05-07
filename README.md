@@ -18,6 +18,3 @@ Template for new and improved portfolio
 [GitHub Page](https://ejbronze.github.io/)
 12.2019
 
-
-Note: 
-Need to add media
