@@ -92,6 +92,10 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .logo .highlight {
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -172,6 +176,19 @@
             inset: 0;
             background: linear-gradient(to right, rgba(250, 250, 249, 0.7) 0%, rgba(250, 250, 249, 0.4) 50%, rgba(250, 250, 249, 0.7) 100%);
             z-index: 1;
+            animation: fadeInOverlay 2s ease-out;
+        }
+
+        @keyframes fadeInOverlay {
+            0% {
+                opacity: 0;
+            }
+            70% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .hero .container {
@@ -180,7 +197,7 @@
         }
 
         .hero-content {
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+            animation: fadeInUp 0.8s ease-out both;
         }
 
         @keyframes fadeInUp {
@@ -204,7 +221,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+            animation: fadeInUp 0.8s ease-out both;
         }
 
         h1 {
@@ -216,6 +233,22 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: nameReveal 2s ease-out;
+        }
+
+        @keyframes nameReveal {
+            0% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .hero-subtitle {
@@ -223,7 +256,7 @@
             color: var(--text-secondary);
             margin-bottom: 2rem;
             max-width: 700px;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
+            animation: fadeInUp 0.8s ease-out both;
         }
 
         .accent-text {
@@ -235,7 +268,7 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.8s both;
+            animation: fadeInUp 0.8s ease-out both;
         }
 
         .btn {
@@ -609,7 +642,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">EJ</div>
+            <div class="logo"><span class="highlight">E</span>dwin <span class="highlight">J</span>aquez</div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
