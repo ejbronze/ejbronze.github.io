@@ -68,7 +68,8 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             z-index: 1000;
-            animation: slideDown 0.6s ease-out;
+            opacity: 0;
+            animation: slideDown 0.6s ease-out 0.8s forwards;
         }
 
         @keyframes slideDown {
@@ -466,7 +467,7 @@
         }
 
         .carousel-slide {
-            min-width: 300px;
+            min-width: 260px;
             flex-shrink: 0;
         }
 
@@ -544,7 +545,7 @@
             }
 
             .carousel-slide {
-                min-width: 260px;
+                min-width: 240px;
             }
 
             .carousel-button {
@@ -572,12 +573,12 @@
 
         .project-image {
             width: 100%;
-            height: 180px;
+            height: 150px;
             background: linear-gradient(135deg, var(--bg-secondary), #e7e5e4);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             position: relative;
             overflow: hidden;
         }
@@ -596,7 +597,7 @@
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 1.25rem;
         }
 
         .project-category {
@@ -958,7 +959,9 @@
                     <div class="carousel-track" id="portfolio-carousel">
                         <div class="carousel-slide">
                             <div class="project-card" data-category="web">
-                                <div class="project-image">🌐</div>
+                                <div class="project-image">
+                                    <img src="img/portfolio/WerToGo.png" alt="WerToGo" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="project-content">
                                     <div class="project-category">Web Application</div>
                                     <h3 class="project-title">WerToGo</h3>
@@ -971,8 +974,8 @@
                                         <span class="tech-tag">Express</span>
                                     </div>
                                     <div class="project-links">
-                                        <a href="#" class="project-link">View Live →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                        <a href="#" target="_blank" class="project-link">View Live →</a>
+                                        <a href="https://github.com/ejbronze" target="_blank" class="project-link">GitHub →</a>
                                     </div>
                                 </div>
                             </div>
@@ -980,7 +983,9 @@
 
                         <div class="carousel-slide">
                             <div class="project-card" data-category="web">
-                                <div class="project-image">📚</div>
+                                <div class="project-image">
+                                    <img src="img/portfolio/googlebooksfinder.png" alt="Google Books Finder" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="project-content">
                                     <div class="project-category">Web Scraper</div>
                                     <h3 class="project-title">Google Books Finder</h3>
@@ -993,8 +998,8 @@
                                         <span class="tech-tag">MongoDB</span>
                                     </div>
                                     <div class="project-links">
-                                        <a href="#" class="project-link">View Live →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                        <a href="#" target="_blank" class="project-link">View Live →</a>
+                                        <a href="https://github.com/ejbronze" target="_blank" class="project-link">GitHub →</a>
                                     </div>
                                 </div>
                             </div>
@@ -1002,7 +1007,9 @@
 
                         <div class="carousel-slide">
                             <div class="project-card" data-category="web">
-                                <div class="project-image">💼</div>
+                                <div class="project-image">
+                                    <img src="img/portfolio/modoinvestments.png" alt="Modo Investments" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="project-content">
                                     <div class="project-category">Full-Stack App</div>
                                     <h3 class="project-title">Modo Investments</h3>
@@ -1015,8 +1022,8 @@
                                         <span class="tech-tag">MySQL</span>
                                     </div>
                                     <div class="project-links">
-                                        <a href="#" class="project-link">View Live →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                        <a href="#" target="_blank" class="project-link">View Live →</a>
+                                        <a href="https://github.com/ejbronze" target="_blank" class="project-link">GitHub →</a>
                                     </div>
                                 </div>
                             </div>
@@ -1024,7 +1031,9 @@
 
                         <div class="carousel-slide">
                             <div class="project-card" data-category="games">
-                                <div class="project-image">🗽</div>
+                                <div class="project-image">
+                                    <img src="img/portfolio/NYC Trivia Game.png" alt="NYC Trivia Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="project-content">
                                     <div class="project-category">Interactive Game</div>
                                     <h3 class="project-title">NYC Trivia Game</h3>
@@ -1037,8 +1046,8 @@
                                         <span class="tech-tag">CSS3</span>
                                     </div>
                                     <div class="project-links">
-                                        <a href="#" class="project-link">Play Game →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                        <a href="#" target="_blank" class="project-link">Play Game →</a>
+                                        <a href="https://github.com/ejbronze" target="_blank" class="project-link">GitHub →</a>
                                     </div>
                                 </div>
                             </div>
@@ -1046,7 +1055,9 @@
 
                         <div class="carousel-slide">
                             <div class="project-card" data-category="games">
-                                <div class="project-image">💎</div>
+                                <div class="project-image">
+                                    <img src="img/portfolio/Crystal Game.png" alt="Crystal Collector" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="project-content">
                                     <div class="project-category">Web Game</div>
                                     <h3 class="project-title">Crystal Collector</h3>
@@ -1059,8 +1070,8 @@
                                         <span class="tech-tag">Game Logic</span>
                                     </div>
                                     <div class="project-links">
-                                        <a href="#" class="project-link">Play Game →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                        <a href="#" target="_blank" class="project-link">Play Game →</a>
+                                        <a href="https://github.com/ejbronze" target="_blank" class="project-link">GitHub →</a>
                                     </div>
                                 </div>
                             </div>
@@ -1068,7 +1079,9 @@
 
                         <div class="carousel-slide">
                             <div class="project-card" data-category="games">
-                                <div class="project-image">🍔</div>
+                                <div class="project-image">
+                                    <img src="img/portfolio/eatdaburger.png" alt="Eat-Da-Burger" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="project-content">
                                     <div class="project-category">Full-Stack Game</div>
                                     <h3 class="project-title">Eat-Da-Burger</h3>
@@ -1081,8 +1094,8 @@
                                         <span class="tech-tag">Handlebars</span>
                                     </div>
                                     <div class="project-links">
-                                        <a href="#" class="project-link">Play Game →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                        <a href="#" target="_blank" class="project-link">Play Game →</a>
+                                        <a href="https://github.com/ejbronze" target="_blank" class="project-link">GitHub →</a>
                                     </div>
                                 </div>
                             </div>
@@ -1090,7 +1103,9 @@
 
                         <div class="carousel-slide">
                             <div class="project-card" data-category="web">
-                                <div class="project-image">🏙️</div>
+                                <div class="project-image">
+                                    <img src="img/portfolio/NYYIMBY-Scraper.png" alt="NYYIMBY Scraper" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="project-content">
                                     <div class="project-category">Web Scraper</div>
                                     <h3 class="project-title">NYYIMBY Scraper</h3>
@@ -1103,8 +1118,8 @@
                                         <span class="tech-tag">MongoDB</span>
                                     </div>
                                     <div class="project-links">
-                                        <a href="#" class="project-link">View Live →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                        <a href="#" target="_blank" class="project-link">View Live →</a>
+                                        <a href="https://github.com/ejbronze" target="_blank" class="project-link">GitHub →</a>
                                     </div>
                                 </div>
                             </div>
@@ -1225,7 +1240,7 @@
                     <div class="contact-card">
                         <div class="contact-icon">📧</div>
                         <h3>Email</h3>
-                        <a href="mailto:erjaquez@gmail.com">erjaquez@gmail.com</a>
+                        <a href="/cdn-cgi/l/email-protection#ddb8afb7bcaca8b8a79dbab0bcb4b1f3beb2b0"><span class="__cf_email__" data-cfemail="086d7a6269797d6d72486f65696164266b6765">[email&#160;protected]</span></a>
                     </div>
                     <div class="contact-card">
                         <div class="contact-icon">💼</div>
@@ -1252,7 +1267,7 @@
                 <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="social-link">
                     <span>LinkedIn</span>
                 </a>
-                <a href="mailto:erjaquez@gmail.com" class="social-link">
+                <a href="/cdn-cgi/l/email-protection#a6c3d4ccc7d7d3c3dce6c1cbc7cfca88c5c9cb" class="social-link">
                     <span>Email</span>
                 </a>
             </div>
@@ -1260,7 +1275,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1436,14 +1451,3 @@
             const carousel = carousels[carouselId];
             const dotsContainer = document.getElementById(`${carouselId}-dots`);
             const dots = dotsContainer.querySelectorAll('.carousel-dot');
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === carousel.currentIndex);
-            });
-        }
-
-        // Initialize carousels when page loads
-        window.addEventListener('load', initCarousels);
-    </script>
-</body>
-</html>
