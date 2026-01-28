@@ -93,6 +93,25 @@
             font-size: 1.5rem;
             font-weight: 800;
             color: var(--text-primary);
+            position: relative;
+            min-width: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .logo .logo-short {
+            display: inline;
+        }
+
+        .logo .logo-full {
+            display: none;
+        }
+
+        .logo.expanded .logo-short {
+            display: none;
+        }
+
+        .logo.expanded .logo-full {
+            display: inline;
         }
 
         .logo .highlight {
@@ -229,11 +248,15 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            animation: nameReveal 2s ease-out;
+        }
+
+        h1 .highlight {
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: nameReveal 2s ease-out;
         }
 
         @keyframes nameReveal {
@@ -642,7 +665,10 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo"><span class="highlight">E</span>dwin <span class="highlight">J</span>aquez</div>
+            <div class="logo">
+                <span class="logo-short"><span class="highlight">E</span><span class="highlight">J</span></span>
+                <span class="logo-full"><span class="highlight">E</span>dwin <span class="highlight">J</span>aquez</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -659,7 +685,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-label">👋 Queens, NYC</div>
-                <h1>Edwin Jaquez</h1>
+                <h1><span class="highlight">E</span>dwin <span class="highlight">J</span>aquez</h1>
                 <p class="hero-subtitle">
                     Full-Stack Developer & <span class="accent-text">Computer Science Educator</span> passionate about building innovative web solutions and inspiring the next generation of technologists.
                 </p>
@@ -1023,6 +1049,21 @@
 
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll(); // Initial check
+
+        // Logo expansion on scroll
+        const logo = document.querySelector('.logo');
+        const hero = document.querySelector('.hero');
+        
+        window.addEventListener('scroll', () => {
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            const scrollPosition = window.scrollY + 100; // Add small offset
+            
+            if (scrollPosition > heroBottom) {
+                logo.classList.add('expanded');
+            } else {
+                logo.classList.remove('expanded');
+            }
+        });
 
         // Portfolio filtering
         const filterButtons = document.querySelectorAll('.filter-btn');
