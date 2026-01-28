@@ -447,6 +447,113 @@
             gap: 2rem;
         }
 
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .carousel-wrapper {
+            overflow: hidden;
+            margin: 0 4rem;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 300px;
+            flex-shrink: 0;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-button:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-button.prev {
+            left: 0;
+        }
+
+        .carousel-button.next {
+            right: 0;
+        }
+
+        .carousel-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-button:disabled:hover {
+            background: var(--bg-card);
+            color: var(--accent-primary);
+            transform: translateY(-50%);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(234, 88, 12, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent-primary);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-wrapper {
+                margin: 0 3rem;
+            }
+
+            .carousel-slide {
+                min-width: 260px;
+            }
+
+            .carousel-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
         .project-card {
             background: var(--bg-card);
             border: 1px solid rgba(0, 0, 0, 0.08);
@@ -465,12 +572,12 @@
 
         .project-image {
             width: 100%;
-            height: 250px;
+            height: 180px;
             background: linear-gradient(135deg, var(--bg-secondary), #e7e5e4);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -489,7 +596,7 @@
         }
 
         .project-content {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .project-category {
@@ -502,15 +609,16 @@
         }
 
         .project-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .project-description {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         .project-tech {
@@ -552,6 +660,110 @@
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+        }
+
+        /* Resume Section */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .resume-column {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .resume-column-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .resume-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .resume-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .resume-job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .resume-company {
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .resume-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .resume-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .resume-description li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .resume-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .resume-skill {
+            padding: 0.5rem 1rem;
+            background: rgba(234, 88, 12, 0.08);
+            border: 1px solid rgba(234, 88, 12, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .resume-download {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 968px) {
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .contact-methods {
@@ -673,6 +885,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="resume.html">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -687,7 +900,7 @@
                 <div class="hero-label">👋 Queens, NYC</div>
                 <h1><span class="highlight">E</span>dwin <span class="highlight">J</span>aquez</h1>
                 <p class="hero-subtitle">
-                    Full-Stack Developer & <span class="accent-text">Computer Science Educator</span> passionate about building innovative web solutions and inspiring the next generation of technologists.
+                    Curriculum Developer & <span class="accent-text">Instructional Designer</span> with 10+ years creating technical training programs in computer science, AI, and emerging technologies.
                 </p>
                 <div class="cta-buttons">
                     <a href="#portfolio" class="btn btn-primary">View My Work</a>
@@ -708,20 +921,20 @@
             <div class="about-content">
                 <div class="about-text reveal">
                     <p>
-                        I'm a native New Yorker from Queens with a passion for technology and education. I've taught Computer Science to middle and high school students in Washington Heights and Bed-Stuy, empowering young minds to explore the world of coding and robotics.
+                        I'm a curriculum developer and instructional designer with over 10 years of experience creating technical training programs. From my roots as a founding Computer Science teacher at KIPP in Washington Heights to my current role at Cornell Tech's K12 Equity Lab, I've dedicated my career to making complex technical concepts accessible and engaging.
                     </p>
                     <p>
-                        As a Full-Stack Web Developer, I love building innovative solutions and constantly learning about emerging technologies. From LEGO EV3 Robots to Makerbot 3D printers, I'm always exploring new ways to create and teach.
+                        I specialize in building comprehensive learning experiences—from async modules and live training to assessments and certification pathways. Whether working with AI-assisted tools, designing hands-on labs, or collaborating cross-functionally with product teams, I focus on translating technical systems into impactful learning that drives adoption and long-term competence.
                     </p>
                     <div class="skills-grid">
-                        <div class="skill-item">Full-Stack Development</div>
-                        <div class="skill-item">React & Node.js</div>
-                        <div class="skill-item">Database Design</div>
-                        <div class="skill-item">STEM Education</div>
-                        <div class="skill-item">Robotics (LEGO EV3)</div>
-                        <div class="skill-item">3D Printing</div>
-                        <div class="skill-item">Arduino & IoT</div>
-                        <div class="skill-item">Web Scraping</div>
+                        <div class="skill-item">Instructional Design</div>
+                        <div class="skill-item">Curriculum Development</div>
+                        <div class="skill-item">AI-Assisted Learning</div>
+                        <div class="skill-item">Technical Training</div>
+                        <div class="skill-item">Web Development</div>
+                        <div class="skill-item">Assessment Design</div>
+                        <div class="skill-item">Ed-Tech Integration</div>
+                        <div class="skill-item">Bilingual Education</div>
                     </div>
                 </div>
             </div>
@@ -739,152 +952,167 @@
                 </p>
             </div>
 
-            <div class="portfolio-filters reveal">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="games">Games</button>
-            </div>
-
-            <div class="portfolio-grid">
-                <div class="project-card reveal" data-category="web">
-                    <div class="project-image">🌐</div>
-                    <div class="project-content">
-                        <div class="project-category">Web Application</div>
-                        <h3 class="project-title">WerToGo</h3>
-                        <p class="project-description">
-                            A database-driven website that determines outcomes based on user input, featuring dynamic content and interactive features.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Express</span>
+            <div class="carousel-container">
+                <button class="carousel-button prev" onclick="moveCarousel('portfolio', -1)">‹</button>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="portfolio-carousel">
+                        <div class="carousel-slide">
+                            <div class="project-card" data-category="web">
+                                <div class="project-image">🌐</div>
+                                <div class="project-content">
+                                    <div class="project-category">Web Application</div>
+                                    <h3 class="project-title">WerToGo</h3>
+                                    <p class="project-description">
+                                        A database-driven website that determines outcomes based on user input, featuring dynamic content and interactive features.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Node.js</span>
+                                        <span class="tech-tag">MySQL</span>
+                                        <span class="tech-tag">Express</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">View Live →</a>
+                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Live →</a>
-                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+
+                        <div class="carousel-slide">
+                            <div class="project-card" data-category="web">
+                                <div class="project-image">📚</div>
+                                <div class="project-content">
+                                    <div class="project-category">Web Scraper</div>
+                                    <h3 class="project-title">Google Books Finder</h3>
+                                    <p class="project-description">
+                                        A web scraping application that searches and retrieves book information from Google Books API with a clean, intuitive interface.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">React</span>
+                                        <span class="tech-tag">API Integration</span>
+                                        <span class="tech-tag">MongoDB</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">View Live →</a>
+                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="project-card" data-category="web">
+                                <div class="project-image">💼</div>
+                                <div class="project-content">
+                                    <div class="project-category">Full-Stack App</div>
+                                    <h3 class="project-title">Modo Investments</h3>
+                                    <p class="project-description">
+                                        A comprehensive web application for tracking and managing investment portfolios with real-time data visualization.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">JavaScript</span>
+                                        <span class="tech-tag">Chart.js</span>
+                                        <span class="tech-tag">MySQL</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">View Live →</a>
+                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="project-card" data-category="games">
+                                <div class="project-image">🗽</div>
+                                <div class="project-content">
+                                    <div class="project-category">Interactive Game</div>
+                                    <h3 class="project-title">NYC Trivia Game</h3>
+                                    <p class="project-description">
+                                        Test your knowledge of New York City with this engaging trivia game featuring questions about NYC history and culture.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">JavaScript</span>
+                                        <span class="tech-tag">jQuery</span>
+                                        <span class="tech-tag">CSS3</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Play Game →</a>
+                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="project-card" data-category="games">
+                                <div class="project-image">💎</div>
+                                <div class="project-content">
+                                    <div class="project-category">Web Game</div>
+                                    <h3 class="project-title">Crystal Collector</h3>
+                                    <p class="project-description">
+                                        A dynamic number-guessing game where players collect crystals to match a random target number. Features engaging gameplay mechanics.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">JavaScript</span>
+                                        <span class="tech-tag">HTML5</span>
+                                        <span class="tech-tag">Game Logic</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Play Game →</a>
+                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="project-card" data-category="games">
+                                <div class="project-image">🍔</div>
+                                <div class="project-content">
+                                    <div class="project-category">Full-Stack Game</div>
+                                    <h3 class="project-title">Eat-Da-Burger</h3>
+                                    <p class="project-description">
+                                        A playful database game where users can create, devour, and manage burgers. Demonstrates CRUD operations in an entertaining way.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Node.js</span>
+                                        <span class="tech-tag">MySQL</span>
+                                        <span class="tech-tag">Handlebars</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">Play Game →</a>
+                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="project-card" data-category="web">
+                                <div class="project-image">🏙️</div>
+                                <div class="project-content">
+                                    <div class="project-category">Web Scraper</div>
+                                    <h3 class="project-title">NYYIMBY Scraper</h3>
+                                    <p class="project-description">
+                                        A web scraping application that aggregates NYC real estate and development news from YIMBY, featuring automated content updates.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Node.js</span>
+                                        <span class="tech-tag">Cheerio</span>
+                                        <span class="tech-tag">MongoDB</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link">View Live →</a>
+                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card reveal" data-category="web">
-                    <div class="project-image">📚</div>
-                    <div class="project-content">
-                        <div class="project-category">Web Scraper</div>
-                        <h3 class="project-title">Google Books Finder</h3>
-                        <p class="project-description">
-                            A web scraping application that searches and retrieves book information from Google Books API with a clean, intuitive interface.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">API Integration</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Live →</a>
-                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal" data-category="web">
-                    <div class="project-image">💼</div>
-                    <div class="project-content">
-                        <div class="project-category">Full-Stack App</div>
-                        <h3 class="project-title">Modo Investments</h3>
-                        <p class="project-description">
-                            A comprehensive web application for tracking and managing investment portfolios with real-time data visualization.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Chart.js</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Live →</a>
-                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal" data-category="games">
-                    <div class="project-image">🗽</div>
-                    <div class="project-content">
-                        <div class="project-category">Interactive Game</div>
-                        <h3 class="project-title">NYC Trivia Game</h3>
-                        <p class="project-description">
-                            Test your knowledge of New York City with this engaging trivia game featuring questions about NYC history and culture.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">jQuery</span>
-                            <span class="tech-tag">CSS3</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Play Game →</a>
-                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal" data-category="games">
-                    <div class="project-image">💎</div>
-                    <div class="project-content">
-                        <div class="project-category">Web Game</div>
-                        <h3 class="project-title">Crystal Collector</h3>
-                        <p class="project-description">
-                            A dynamic number-guessing game where players collect crystals to match a random target number. Features engaging gameplay mechanics.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">Game Logic</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Play Game →</a>
-                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal" data-category="games">
-                    <div class="project-image">🍔</div>
-                    <div class="project-content">
-                        <div class="project-category">Full-Stack Game</div>
-                        <h3 class="project-title">Eat-Da-Burger</h3>
-                        <p class="project-description">
-                            A playful database game where users can create, devour, and manage burgers. Demonstrates CRUD operations in an entertaining way.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Handlebars</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Play Game →</a>
-                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal" data-category="web">
-                    <div class="project-image">🏙️</div>
-                    <div class="project-content">
-                        <div class="project-category">Web Scraper</div>
-                        <h3 class="project-title">NYYIMBY Scraper</h3>
-                        <p class="project-description">
-                            A web scraping application that aggregates NYC real estate and development news from YIMBY, featuring automated content updates.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Cheerio</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Live →</a>
-                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-button next" onclick="moveCarousel('portfolio', 1)">›</button>
+                <div class="carousel-dots" id="portfolio-dots"></div>
             </div>
         </div>
     </section>
@@ -900,70 +1128,85 @@
                 </p>
             </div>
 
-            <div class="portfolio-grid">
-                <div class="project-card reveal">
-                    <div class="project-image">🤖</div>
-                    <div class="project-content">
-                        <div class="project-category">Robotics Education</div>
-                        <h3 class="project-title">FIRST LEGO League Coaching</h3>
-                        <p class="project-description">
-                            Coached middle school students in robotics competitions using LEGO EV3, teaching programming, engineering, and teamwork skills. Led teams through design challenges and competitive tournaments.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">LEGO EV3</span>
-                            <span class="tech-tag">Block Programming</span>
-                            <span class="tech-tag">STEM Education</span>
+            <div class="carousel-container">
+                <button class="carousel-button prev" onclick="moveCarousel('education', -1)">‹</button>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="education-carousel">
+                        <div class="carousel-slide">
+                            <div class="project-card">
+                                <div class="project-image">🤖</div>
+                                <div class="project-content">
+                                    <div class="project-category">Robotics Education</div>
+                                    <h3 class="project-title">FIRST LEGO League Coaching</h3>
+                                    <p class="project-description">
+                                        Coached middle school students in robotics competitions using LEGO EV3, teaching programming, engineering, and teamwork skills. Led teams through design challenges and competitive tournaments.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">LEGO EV3</span>
+                                        <span class="tech-tag">Block Programming</span>
+                                        <span class="tech-tag">STEM Education</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="project-card reveal">
-                    <div class="project-image">💡</div>
-                    <div class="project-content">
-                        <div class="project-category">Arduino & Electronics</div>
-                        <h3 class="project-title">LED Arduino Marquee</h3>
-                        <p class="project-description">
-                            Custom-built LED display system using Arduino for classroom demonstrations. Students learned about microcontrollers, programming, and electronics through hands-on projects.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Arduino</span>
-                            <span class="tech-tag">C++</span>
-                            <span class="tech-tag">Electronics</span>
+                        <div class="carousel-slide">
+                            <div class="project-card">
+                                <div class="project-image">💡</div>
+                                <div class="project-content">
+                                    <div class="project-category">Arduino & Electronics</div>
+                                    <h3 class="project-title">LED Arduino Marquee</h3>
+                                    <p class="project-description">
+                                        Custom-built LED display system using Arduino for classroom demonstrations. Students learned about microcontrollers, programming, and electronics through hands-on projects.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Arduino</span>
+                                        <span class="tech-tag">C++</span>
+                                        <span class="tech-tag">Electronics</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="project-card reveal">
-                    <div class="project-image">🖨️</div>
-                    <div class="project-content">
-                        <div class="project-category">Maker Education</div>
-                        <h3 class="project-title">3D Printing & Design</h3>
-                        <p class="project-description">
-                            Introduced students to 3D modeling and printing using Makerbot printers. Integrated design thinking and rapid prototyping into Computer Science curriculum.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Makerbot</span>
-                            <span class="tech-tag">3D Modeling</span>
-                            <span class="tech-tag">Design Thinking</span>
+                        <div class="carousel-slide">
+                            <div class="project-card">
+                                <div class="project-image">🖨️</div>
+                                <div class="project-content">
+                                    <div class="project-category">Maker Education</div>
+                                    <h3 class="project-title">3D Printing & Design</h3>
+                                    <p class="project-description">
+                                        Introduced students to 3D modeling and printing using Makerbot printers. Integrated design thinking and rapid prototyping into Computer Science curriculum.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Makerbot</span>
+                                        <span class="tech-tag">3D Modeling</span>
+                                        <span class="tech-tag">Design Thinking</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="project-card reveal">
-                    <div class="project-image">👨‍🏫</div>
-                    <div class="project-content">
-                        <div class="project-category">Computer Science Education</div>
-                        <h3 class="project-title">CS Curriculum Development</h3>
-                        <p class="project-description">
-                            Developed and taught Computer Science curriculum for middle and high school students in Washington Heights and Bed-Stuy, Brooklyn. Focused on making coding accessible and engaging.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Curriculum Design</span>
-                            <span class="tech-tag">Web Development</span>
-                            <span class="tech-tag">Python</span>
+                        <div class="carousel-slide">
+                            <div class="project-card">
+                                <div class="project-image">👨‍🏫</div>
+                                <div class="project-content">
+                                    <div class="project-category">Computer Science Education</div>
+                                    <h3 class="project-title">CS Curriculum Development</h3>
+                                    <p class="project-description">
+                                        Developed and taught Computer Science curriculum for middle and high school students in Washington Heights and Bed-Stuy, Brooklyn. Focused on making coding accessible and engaging.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Curriculum Design</span>
+                                        <span class="tech-tag">Web Development</span>
+                                        <span class="tech-tag">Python</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <button class="carousel-button next" onclick="moveCarousel('education', 1)">›</button>
+                <div class="carousel-dots" id="education-dots"></div>
             </div>
         </div>
     </section>
@@ -1097,6 +1340,110 @@
                 });
             });
         });
+
+        // Carousel functionality
+        const carousels = {
+            portfolio: { currentIndex: 0, slidesPerView: 3 },
+            education: { currentIndex: 0, slidesPerView: 3 }
+        };
+
+        function initCarousels() {
+            Object.keys(carousels).forEach(carouselId => {
+                updateCarouselView(carouselId);
+                createDots(carouselId);
+            });
+
+            // Update slides per view on resize
+            window.addEventListener('resize', () => {
+                Object.keys(carousels).forEach(carouselId => {
+                    updateSlidesPerView(carouselId);
+                    updateCarouselView(carouselId);
+                });
+            });
+
+            // Initial setup
+            Object.keys(carousels).forEach(updateSlidesPerView);
+        }
+
+        function updateSlidesPerView(carouselId) {
+            const width = window.innerWidth;
+            if (width < 768) {
+                carousels[carouselId].slidesPerView = 1;
+            } else if (width < 1200) {
+                carousels[carouselId].slidesPerView = 2;
+            } else {
+                carousels[carouselId].slidesPerView = 3;
+            }
+        }
+
+        function moveCarousel(carouselId, direction) {
+            const carousel = carousels[carouselId];
+            const track = document.getElementById(`${carouselId}-carousel`);
+            const slides = track.querySelectorAll('.carousel-slide');
+            const maxIndex = Math.max(0, slides.length - carousel.slidesPerView);
+
+            carousel.currentIndex = Math.max(0, Math.min(maxIndex, carousel.currentIndex + direction));
+            updateCarouselView(carouselId);
+        }
+
+        function updateCarouselView(carouselId) {
+            const carousel = carousels[carouselId];
+            const track = document.getElementById(`${carouselId}-carousel`);
+            const slides = track.querySelectorAll('.carousel-slide');
+            
+            if (slides.length === 0) return;
+
+            const slideWidth = slides[0].offsetWidth;
+            const gap = 32; // 2rem gap
+            const offset = -(carousel.currentIndex * (slideWidth + gap));
+            
+            track.style.transform = `translateX(${offset}px)`;
+
+            // Update buttons
+            const prevBtn = track.closest('.carousel-container').querySelector('.prev');
+            const nextBtn = track.closest('.carousel-container').querySelector('.next');
+            const maxIndex = Math.max(0, slides.length - carousel.slidesPerView);
+
+            prevBtn.disabled = carousel.currentIndex === 0;
+            nextBtn.disabled = carousel.currentIndex >= maxIndex;
+
+            // Update dots
+            updateDots(carouselId);
+        }
+
+        function createDots(carouselId) {
+            const carousel = carousels[carouselId];
+            const track = document.getElementById(`${carouselId}-carousel`);
+            const slides = track.querySelectorAll('.carousel-slide');
+            const dotsContainer = document.getElementById(`${carouselId}-dots`);
+            
+            dotsContainer.innerHTML = '';
+            
+            const numDots = Math.max(1, slides.length - carousel.slidesPerView + 1);
+            
+            for (let i = 0; i < numDots; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot';
+                dot.onclick = () => {
+                    carousel.currentIndex = i;
+                    updateCarouselView(carouselId);
+                };
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots(carouselId) {
+            const carousel = carousels[carouselId];
+            const dotsContainer = document.getElementById(`${carouselId}-dots`);
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carousel.currentIndex);
+            });
+        }
+
+        // Initialize carousels when page loads
+        window.addEventListener('load', initCarousels);
     </script>
 </body>
 </html>
