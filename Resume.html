@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Edwin Jaquez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fafaf9;
+            --bg-secondary: #f5f5f4;
+            --bg-card: #ffffff;
+            --accent-primary: #ea580c;
+            --accent-secondary: #f97316;
+            --accent-tertiary: #fb923c;
+            --text-primary: #1c1917;
+            --text-secondary: #57534e;
+            --text-muted: #78716c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(234, 88, 12, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(251, 146, 60, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 249, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            position: relative;
+            min-width: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .logo .highlight {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent-primary);
+        }
+
+        /* Resume Page Styles */
+        .resume-page {
+            min-height: 100vh;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(234, 88, 12, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(234, 88, 12, 0.35);
+        }
+
+        /* Resume Grid */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .resume-column {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .resume-column-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .resume-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .resume-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .resume-job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .resume-company {
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .resume-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .resume-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .resume-description li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .resume-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .resume-skill {
+            padding: 0.5rem 1rem;
+            background: rgba(234, 88, 12, 0.08);
+            border: 1px solid rgba(234, 88, 12, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .resume-download {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .resume-page {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="highlight">E</span><span class="highlight">J</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="resume.html" class="active">Resume</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Resume Page -->
+    <section class="resume-page">
+        <div class="container">
+            <div class="page-header">
+                <div class="section-label">My Resume</div>
+                <h1><span class="highlight">E</span>xperience & <span class="highlight">E</span>ducation</h1>
+                <p class="page-description">
+                    My professional journey as a curriculum developer, instructional designer, and educator.
+                </p>
+                <a href="Edwin_Jaquez_Resume.pdf" download class="btn btn-primary">Download PDF Resume</a>
+            </div>
+
+            <div class="resume-grid">
+                <!-- Experience Column -->
+                <div class="resume-column">
+                    <h3 class="resume-column-title">
+                        <span style="font-size: 1.5rem; margin-right: 0.5rem;">💼</span>
+                        Work Experience
+                    </h3>
+
+                    <div class="resume-item">
+                        <div class="resume-header">
+                            <div>
+                                <h4 class="resume-job-title">Coach in Residence</h4>
+                                <p class="resume-company">K12 Equity Lab | Cornell Tech</p>
+                            </div>
+                            <span class="resume-date">Jan 2022 - Jun 2025</span>
+                        </div>
+                        <ul class="resume-description">
+                            <li>Designed and maintained scalable learning experiences including async modules, live virtual training, and facilitator guides for diverse adult learners</li>
+                            <li>Partnered cross-functionally with product, research, and implementation teams to define learning goals and training requirements</li>
+                            <li>Used AI-assisted tools and rapid iteration workflows to prototype and refine training content</li>
+                            <li>Translated technical concepts into clear, engaging instruction for both technical and non-technical audiences</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-header">
+                            <div>
+                                <h4 class="resume-job-title">Dean of Student Culture</h4>
+                                <p class="resume-company">KIPP: WHMS | Washington Heights, NY</p>
+                            </div>
+                            <span class="resume-date">Jun 2017 - Jun 2019</span>
+                        </div>
+                        <ul class="resume-description">
+                            <li>Developed and delivered professional development workshops on data-driven systems and restorative practices, training 40+ educators</li>
+                            <li>Created resources and playbooks that supported the consistent adoption of new instructional and operational frameworks</li>
+                            <li>Collaborated with leadership to design interventions informed by student data, improving academic and behavioral outcomes</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-header">
+                            <div>
+                                <h4 class="resume-job-title">Founding Computer Science Teacher</h4>
+                                <p class="resume-company">KIPP: WHMS | Washington Heights, NY</p>
+                            </div>
+                            <span class="resume-date">Jun 2014 - Jun 2019</span>
+                        </div>
+                        <ul class="resume-description">
+                            <li>Designed a project-based computer science curriculum for 450+ students (Grades 4-8), integrating coding, hardware, and 3D design</li>
+                            <li>Created assessments, hands-on labs, and certification-style pathways that enabled measurable student progress in technical skills</li>
+                            <li>Managed the deployment and training for 500+ Chromebooks, providing onboarding and documentation for staff and students</li>
+                            <li>Partnered with EdTech providers (Code.org, Mouse Inc.) to scale computational thinking and digital literacy adoption</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education & Skills Column -->
+                <div class="resume-column">
+                    <h3 class="resume-column-title">
+                        <span style="font-size: 1.5rem; margin-right: 0.5rem;">🎓</span>
+                        Education & Certifications
+                    </h3>
+
+                    <div class="resume-item">
+                        <div class="resume-header">
+                            <div>
+                                <h4 class="resume-job-title">Executive Degree in Web Development</h4>
+                                <p class="resume-company">Columbia University</p>
+                            </div>
+                            <span class="resume-date">Jun 2019</span>
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-header">
+                            <div>
+                                <h4 class="resume-job-title">Master of Arts in Teaching (MAT)</h4>
+                                <p class="resume-company">Relay Graduate School of Education</p>
+                            </div>
+                            <span class="resume-date">Jun 2016</span>
+                        </div>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.95rem;">STEM Education</p>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-header">
+                            <div>
+                                <h4 class="resume-job-title">Bachelor of Business Administration</h4>
+                                <p class="resume-company">DeVry University</p>
+                            </div>
+                            <span class="resume-date">Jun 2014</span>
+                        </div>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.95rem;">Finance</p>
+                    </div>
+
+                    <div class="resume-item">
+                        <h4 class="resume-job-title" style="margin-bottom: 1rem;">Certifications</h4>
+                        <div class="resume-skills">
+                            <span class="resume-skill">Generative AI for Productivity</span>
+                            <span class="resume-skill">CS4All - NYC DOE</span>
+                            <span class="resume-skill">Equity-Centered Design</span>
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <h4 class="resume-job-title" style="margin-bottom: 1rem;">Core Skills</h4>
+                        <div class="resume-skills">
+                            <span class="resume-skill">Instructional Design</span>
+                            <span class="resume-skill">Curriculum Development</span>
+                            <span class="resume-skill">AI-Assisted Content</span>
+                            <span class="resume-skill">Technical Training</span>
+                            <span class="resume-skill">Web Development</span>
+                            <span class="resume-skill">JavaScript</span>
+                            <span class="resume-skill">React & Node.js</span>
+                            <span class="resume-skill">Google Workspace</span>
+                            <span class="resume-skill">Figma</span>
+                            <span class="resume-skill">Bilingual (Spanish/Portuguese)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Edwin Jaquez. Built with passion in Queens, NYC.</p>
+        </div>
+    </footer>
+</body>
+</html>
