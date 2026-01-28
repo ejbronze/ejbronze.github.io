@@ -1,389 +1,1012 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home Page</title>
-<meta name="description" content="">
-<meta name="author" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edwin Jaquez - Developer & Educator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fafaf9;
+            --bg-secondary: #f5f5f4;
+            --bg-card: #ffffff;
+            --accent-primary: #ea580c;
+            --accent-secondary: #f97316;
+            --accent-tertiary: #fb923c;
+            --text-primary: #1c1917;
+            --text-secondary: #57534e;
+            --text-muted: #78716c;
+        }
 
-<!-- Favicons
-    ================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-<!-- Stylesheet
-    ================================================== -->
-<link rel="stylesheet" type="text/css"  href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/nivo-lightbox.css">
-<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/default.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="js/modernizr.custom.js"></script>
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(234, 88, 12, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(251, 146, 60, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 249, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.12;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(250, 250, 249, 0.85) 0%, rgba(250, 250, 249, 0.6) 50%, rgba(250, 250, 249, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(234, 88, 12, 0.08);
+            border: 1px solid rgba(234, 88, 12, 0.2);
+            border-radius: 50px;
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #1c1917 0%, #57534e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .accent-text {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(234, 88, 12, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(234, 88, 12, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            background: rgba(234, 88, 12, 0.05);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent-primary);
+            background: rgba(234, 88, 12, 0.05);
+            transform: translateX(5px);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border-color: var(--accent-primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(234, 88, 12, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--bg-secondary), #e7e5e4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.08), rgba(249, 115, 22, 0.08));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image::before {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-category {
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(234, 88, 12, 0.08);
+            border: 1px solid rgba(234, 88, 12, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--accent-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(234, 88, 12, 0.12);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">EJ</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- Header -->
-<header id="header">
-  <div class="intro">
-    <div class="container">
-      <div class="row">
-        <div class="intro-text">
-          <h1>Edwin Jaquez</h1>
-          <hr>
-          <p>Web Developer • Computer Science Educator</p>
-          <a href="#about"><i class="fa fa-chevron-down"></i></a> </div>
-      </div>
-    </div>
-  </div>
-</header>
-<!-- Navigation -->
-<div id="nav">
-  <nav class="navbar navbar-custom">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
-      </div>
-      
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse navbar-main-collapse">
-        <ul class="nav navbar-nav">
-          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-          <li class="hidden"> <a href="#page-top"></a> </li>
-          <li> <a class="page-scroll" href="#about">About</a> </li>
-          <li> <a class="page-scroll" href="#portfolio">Portfolio</a> </li>
-          <li> <a class="page-scroll" href="#contact">Contact</a> </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div>
-<!-- About Section -->
-<div id="about">
-  <div class="container">
-    <div class="section-title text-center center">
-      <h2>About Me</h2>
-      <hr>
-    </div>
-    <div class="row">
-      <div class="col-md-12 text-center"><img src="img/about.jpg" class="img-responsive"></div>
-      <div class="col-md-8 col-md-offset-2">
-        <div class="about-text">
-          <p>Hi, my name is Edwin Jaquez. I'm a native New Yorker, residing in the borough of Queens. I've taught Computer Science to Middle and High school kids in Washington Heights, Manhattan and Bed-Stuy, Brooklyn.</p>
-          <p>I'm also a Full-Stack Web Developer, and avid learner of all things tech. I've worked with LEGO EV3 Robots, Makerbot 3d printers, and I'm teaching myself how to play the guitar.</p>
-          <a href="#portfolio" class="btn btn-default btn-lg page-scroll">Portfolio Gallery</a> </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Portfolio Section -->
-<div id="portfolio">
-  <div class="container">
-    <div class="section-title text-center center">
-      <h2>Portfolio Gallery</h2>
-      <hr>
-    </div>
-    <div class="categories">
-      <ul class="cat">
-        <li>
-          <ol class="type">
-            <li><a href="#" data-filter="*" class="active">All</a></li>
-            <li><a href="#" data-filter=".3dprint">3D Printing</a></li>
-            <li><a href="#" data-filter=".webdev">Web Development</a></li>
-            <li><a href="#" data-filter=".lego">LEGO Robotics</a></li>
-            <li><a href="#" data-filter=".stem">STEM</a></li>
-          </ol>
-        </li>
-      </ul>
-      <div class="clearfix"></div>
-    </div>
-    <div class="row">
-      <div class="portfolio-items">
-        <!-- Web Development Items -->
-        <!-- Item #1 -->
-        <div class="col-sm-6 col-md-3 col-lg-3 webdev">
-          <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/wertogo/','_blank')">Visit WerToGo</button>
-            <div class="hover-bg"> 
-              <a href="img/portfolio/WerToGo.png" title="Website project: A site using database to determine outcomes based on user input." data-lightbox-gallery="gallery1">
-                <div class="hover-text">
-                  <h4>WerToGo</h4>
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="img/media/teaching-students.jpeg" alt="Edwin teaching students" class="hero-bg-image">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-label">👋 Queens, NYC</div>
+                <h1>Edwin Jaquez</h1>
+                <p class="hero-subtitle">
+                    Full-Stack Developer & <span class="accent-text">Computer Science Educator</span> passionate about building innovative web solutions and inspiring the next generation of technologists.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                    <a href="#education" class="btn btn-primary">Teaching Experience</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                 </div>
-                <img src="img/portfolio/WerToGo.png" class="img-responsive" alt="WerToGo">
-              </a>
             </div>
-          </div>          
         </div>
-        <!-- Item #2 -->
-        <div class="col-sm-6 col-md-3 col-lg-3 webdev">
-         <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/TriviaGame/','_blank')">Play NYC Trivia</button>
-            <div class="hover-bg"> <a href="img/portfolio/NYC Trivia Game.png" title="NYC Trivia Game" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>NYC Trivia Game</h4>
-              </div>
-              <img src="img/portfolio/NYC Trivia Game.png" class="img-responsive" alt="NYC Trivia Game"> </a> </div>
-          </div>
-        </div>
-        <!-- Item 4 -->
-        <div class="col-sm-6 col-md-3 col-lg-3 webdev">
-         <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/unit-4-game/','_blank')">Play Crystal Collector</button>
-            <div class="hover-bg"> <a href="img/portfolio/Crystal Game.png" title="Cystal Collector Game" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Crystal Collector Game</h4>
-              </div>
-  
-              <img src="img/portfolio/Crystal Game.png" class="img-responsive" alt="Crystal Collector Game - Unit 4 Project" > </a> </div>
-          </div>
-        </div>
-        <!-- Item 5 -->
-        <div class="col-sm-6 col-md-3 col-lg-3 webdev">
-          <!-- Copy this to add button for every element added -->
-         <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/gifTastic/','_blank')">Visit gifTastic</button>
-            <!-- End copy here  -->
-            <div class="hover-bg"> <a href="img/portfolio/gifTastic.png" title="gifTastic - Gif Finder | Web Scraper" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>gifTastic</h4>
-              </div>
-              <img src="img/portfolio/gifTastic.png" class="img-responsive" alt="gifTastic - Gif Finder | Web Scraper"> </a> </div>
-          </div>
-        </div>
-        <!-- item 6 -->
-        <div class="col-sm-6 col-md-3 col-lg-3 webdev">
-          <!-- Copy this to add button for every element added -->
-         <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/Psychic-Game/','_blank')">Play Psychic Game</button>
-            <!-- End copy here  -->
-            <div class="hover-bg"> <a href="img/portfolio/Psychic game.png" title="Psychic Game" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Psychic Game</h4>
-              </div>
-              <img src="img/portfolio/Psychic game.png" class="img-responsive" alt="Psychic Game"> </a> </div>
-          </div>
-        </div>
-        <!-- item 7 -->
-        <div class="col-sm-6 col-md-3 col-lg-3 webdev">
-         <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://modo-investments.herokuapp.com/','_blank')">Visit Modo Investments</button>
-            <div class="hover-bg"> <a href="img/portfolio/modoinvestments.png" title="Modo Investments - A Web Application." data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Modo Investments</h4>
-              </div>
-              <img src="img/portfolio/modoinvestments.png" class="img-responsive" alt="Modo Investments - A Web Application."> </a> </div>
-          </div>
-        </div>
-<!-- item 8 -->
-<div class="col-sm-6 col-md-3 col-lg-3 webdev">
-    <div class="portfolio-item text-center">
-       <button class="btn btn-warning btn-block" onclick=" window.open('https://eatdaburger-ejbronze.herokuapp.com/','_blank')">Play Eat-The-Burger</button>
-       <div class="hover-bg"> <a href="img/portfolio/eatdaburger.png" title="Eat The Burger - A web application game. Play with databases by making and deleting a burger" data-lightbox-gallery="gallery1">
-         <div class="hover-text">
-           <h4>Eat The Burger</h4>
-         </div>
-         <img src="img/portfolio/eatdaburger.png" class="img-responsive" alt="Eat The Burger - A web application game. Play with databases by making and deleting a burger"> </a> </div>
-     </div>
-   </div>
-   <!-- Item 9 -->
-   <div class="col-sm-6 col-md-3 col-lg-3 webdev">
-      <div class="portfolio-item text-center">
-         <button class="btn btn-warning btn-block" onclick=" window.open('https://webscrapperapp.herokuapp.com/','_blank')">Visit NYYIMBY-Scraper</button>
-         <div class="hover-bg"> <a href="img/portfolio//NYYIMBY-Scraper.png" title="Web Scraper App" data-lightbox-gallery="gallery1">
-           <div class="hover-text">
-             <h4>NYYIMBY Web Scraper</h4>
-           </div>
-           <img src="img/portfolio//NYYIMBY-Scraper.png" class="img-responsive" alt="NYYIMBY - A Web Scraping Application."> </a> </div>
-       </div>
-     </div>
-     <!-- Item 10 -->
-   <div class="col-sm-6 col-md-3 col-lg-3 webdev">
-      <div class="portfolio-item text-center">
-         <button class="btn btn-warning btn-block" onclick=" window.open('https://google-booksearcher.herokuapp.com/','_blank')">Visit Google Books Search</button>
-         <div class="hover-bg"> <a href="img/portfolio/googlebooksfinder.png" title="Web Scraper App" data-lightbox-gallery="gallery1">
-           <div class="hover-text">
-             <h4>Google Books Finder</h4>
-           </div>
-           <img src="img/portfolio/googlebooksfinder.png" class="img-responsive" alt="Google Books Search - A Web Scraping Application."> </a> </div>
-       </div>
-     </div>
-<!-- Item 11 -->
-<div class="col-sm-6 col-md-3 col-lg-3 webdev">
-    <div class="portfolio-item text-center">
-       <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/simpsonsclicky/','_blank')">Play Simpson's Clicky Game</button>
-       <div class="hover-bg"> <a href="img/portfolio/Simpsonsclicky.png" title="Simpson's Clicky Game" data-lightbox-gallery="gallery1">
-         <div class="hover-text">
-           <h4>Simpson's Clicky Game</h4>
-         </div>
-         <img src="img/portfolio/Simpsonsclicky.png" class="img-responsive" alt="Simpson's Clicky Game"> </a> </div>
-     </div>
-   </div>
+    </section>
 
-    <!-- Robotics items-->
-    <!-- Item 1 -->
-    <div class="col-sm-6 col-md-3 col-lg-3 lego">
-      <div class="portfolio-item text-center">
-        <button class="btn btn-warning btn-block" onclick=" window.open('http://www.firstlegoleague.org/','_blank')">FIRST LEGO League</button>
-        <div class="hover-bg"> <a href="img/media/robotics.JPG" title="Coaching students during our First Lego League Competition." data-lightbox-gallery="gallery1">
-          <div class="hover-text">
-            <h4>LEGO Robotics Coaching</h4>
-          </div>
-          <img src="img/media/robotics.JPG" class="img-responsive" alt="Coaching students during a First Lego League Competition."> </a> </div>
-      </div>
-    </div>
-
-    <!-- STEM Stuff -->
-    <!-- Item 1 -->
-    <div class="col-sm-6 col-md-3 col-lg-3 stem">
-      <div class="portfolio-item text-center">
-        <button class="btn btn-warning btn-block" onclick=" window.open('https://www.arduino.cc/','_blank')">Arduino</button>
-        <div class="hover-bg"> <a href="img/media/LEDSCREEN.mp4" title="Project Title" data-lightbox-gallery="gallery1">
-          <div class="hover-text">
-            <h4>STEM - LED Arduino Marquee</h4>
-          </div>
-          <video src="img/media/LEDSCREEN.mp4" class="img-responsive" alt="Ardiono LED Marquee"> </a> </div>
-      </div>
-    </div>
-    <!-- Item 2 -->
-    <div class="col-sm-6 col-md-3 col-lg-3 stem">
-      <div class="portfolio-item text-center">
-        <button class="btn btn-warning btn-block"
-          onclick=" window.open('https://www.arduino.cc/','_blank')">Arduino</button>
-        <div class="hover-bg"> <a href="img/media/LEDSCREEN2.mp4" title="Project Title" data-lightbox-gallery="gallery1">
-            <div class="hover-text">
-              <h4>STEM - LED Arduino Marquee</h4>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">About Me</div>
+                <h2>Developer. Educator. Innovator.</h2>
             </div>
-            <video src="img/media/LEDSCREEN2.mp4" class="img-responsive" alt="Ardiono LED Marquee">
-          </a> </div>
-      </div>
-    </div>
-
-
-        <!-- More Items Below -->
-        <!-- <div class="col-sm-6 col-md-3 col-lg-3 illustration">
-          <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/wertogo/','_blank')">Open Site</button>
-            <div class="hover-bg"> <a href="img/portfolio/09-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Project Title</h4>
-              </div>
-              <img src="img/portfolio/09-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-
-
-        <div class="col-sm-6 col-md-3 col-lg-3 photography">  
-          <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/wertogo/','_blank')">Open Site</button>
-            <div class="hover-bg"> <a href="img/portfolio/10-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Project Title</h4>
-              </div>
-              <img src="img/portfolio/10-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-
-
-        <div class="col-sm-6 col-md-3 col-lg-3 photography">
-          <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/wertogo/','_blank')">Open Site</button>
-            <div class="hover-bg"> <a href="img/portfolio/11-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Project Title</h4>
-              </div>
-              <img src="img/portfolio/11-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-
-
-        <div class="col-sm-6 col-md-3 col-lg-3 graphic">  
-          <div class="portfolio-item text-center">
-            <button class="btn btn-warning btn-block" onclick=" window.open('https://ejbronze.github.io/wertogo/','_blank')">Open Site</button>
-            <div class="hover-bg"> <a href="img/portfolio/12-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Project Title</h4>
-              </div>
-              <img src="img/portfolio/12-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>-->
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- INSERT ORGANIZATIONS I'VE WORKED FOR -->
-
-<!-- Contact Section -->
-
-<div id="contact" class="text-center">
-  <div class="container">
-    <div class="section-title center">
-      <h2>Get In Touch</h2>
-      <hr>
-      <a href="mailto:erjaquez@gmail.com" target="_blank" class="btn btn-default btn-lg page-scroll">Email Me</a></div>
-    </div>
-    <div class="col-md-8 col-md-offset-2">
-      <!-- <form name="sentMessage" id="contactForm" novalidate>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <input type="text" id="name" class="form-control" placeholder="Name" required="required">
-              <p class="help-block text-danger"></p>
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <p>
+                        I'm a native New Yorker from Queens with a passion for technology and education. I've taught Computer Science to middle and high school students in Washington Heights and Bed-Stuy, empowering young minds to explore the world of coding and robotics.
+                    </p>
+                    <p>
+                        As a Full-Stack Web Developer, I love building innovative solutions and constantly learning about emerging technologies. From LEGO EV3 Robots to Makerbot 3D printers, I'm always exploring new ways to create and teach.
+                    </p>
+                    <div class="skills-grid">
+                        <div class="skill-item">Full-Stack Development</div>
+                        <div class="skill-item">React & Node.js</div>
+                        <div class="skill-item">Database Design</div>
+                        <div class="skill-item">STEM Education</div>
+                        <div class="skill-item">Robotics (LEGO EV3)</div>
+                        <div class="skill-item">3D Printing</div>
+                        <div class="skill-item">Arduino & IoT</div>
+                        <div class="skill-item">Web Scraping</div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <input type="email" id="email" class="form-control" placeholder="Email" required="required">
-              <p class="help-block text-danger"></p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">My Work</div>
+                <h2>Featured Projects</h2>
+                <p class="section-description">
+                    A collection of web applications, games, and STEM projects showcasing my technical skills and creative problem-solving.
+                </p>
             </div>
-          </div>
+
+            <div class="portfolio-filters reveal">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="games">Games</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="project-card reveal" data-category="web">
+                    <div class="project-image">🌐</div>
+                    <div class="project-content">
+                        <div class="project-category">Web Application</div>
+                        <h3 class="project-title">WerToGo</h3>
+                        <p class="project-description">
+                            A database-driven website that determines outcomes based on user input, featuring dynamic content and interactive features.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Express</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Live →</a>
+                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-category="web">
+                    <div class="project-image">📚</div>
+                    <div class="project-content">
+                        <div class="project-category">Web Scraper</div>
+                        <h3 class="project-title">Google Books Finder</h3>
+                        <p class="project-description">
+                            A web scraping application that searches and retrieves book information from Google Books API with a clean, intuitive interface.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Live →</a>
+                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-category="web">
+                    <div class="project-image">💼</div>
+                    <div class="project-content">
+                        <div class="project-category">Full-Stack App</div>
+                        <h3 class="project-title">Modo Investments</h3>
+                        <p class="project-description">
+                            A comprehensive web application for tracking and managing investment portfolios with real-time data visualization.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Live →</a>
+                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-category="games">
+                    <div class="project-image">🗽</div>
+                    <div class="project-content">
+                        <div class="project-category">Interactive Game</div>
+                        <h3 class="project-title">NYC Trivia Game</h3>
+                        <p class="project-description">
+                            Test your knowledge of New York City with this engaging trivia game featuring questions about NYC history and culture.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">jQuery</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Play Game →</a>
+                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-category="games">
+                    <div class="project-image">💎</div>
+                    <div class="project-content">
+                        <div class="project-category">Web Game</div>
+                        <h3 class="project-title">Crystal Collector</h3>
+                        <p class="project-description">
+                            A dynamic number-guessing game where players collect crystals to match a random target number. Features engaging gameplay mechanics.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">Game Logic</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Play Game →</a>
+                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-category="games">
+                    <div class="project-image">🍔</div>
+                    <div class="project-content">
+                        <div class="project-category">Full-Stack Game</div>
+                        <h3 class="project-title">Eat-Da-Burger</h3>
+                        <p class="project-description">
+                            A playful database game where users can create, devour, and manage burgers. Demonstrates CRUD operations in an entertaining way.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Handlebars</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Play Game →</a>
+                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-category="web">
+                    <div class="project-image">🏙️</div>
+                    <div class="project-content">
+                        <div class="project-category">Web Scraper</div>
+                        <h3 class="project-title">NYYIMBY Scraper</h3>
+                        <p class="project-description">
+                            A web scraping application that aggregates NYC real estate and development news from YIMBY, featuring automated content updates.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Cheerio</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Live →</a>
+                            <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
-          <p class="help-block text-danger"></p>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Education & Teaching</div>
+                <h2>Inspiring Future Technologists</h2>
+                <p class="section-description">
+                    My journey as a Computer Science educator, empowering students through hands-on STEM learning and robotics competitions.
+                </p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="project-card reveal">
+                    <div class="project-image">🤖</div>
+                    <div class="project-content">
+                        <div class="project-category">Robotics Education</div>
+                        <h3 class="project-title">FIRST LEGO League Coaching</h3>
+                        <p class="project-description">
+                            Coached middle school students in robotics competitions using LEGO EV3, teaching programming, engineering, and teamwork skills. Led teams through design challenges and competitive tournaments.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">LEGO EV3</span>
+                            <span class="tech-tag">Block Programming</span>
+                            <span class="tech-tag">STEM Education</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-image">💡</div>
+                    <div class="project-content">
+                        <div class="project-category">Arduino & Electronics</div>
+                        <h3 class="project-title">LED Arduino Marquee</h3>
+                        <p class="project-description">
+                            Custom-built LED display system using Arduino for classroom demonstrations. Students learned about microcontrollers, programming, and electronics through hands-on projects.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Electronics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-image">🖨️</div>
+                    <div class="project-content">
+                        <div class="project-category">Maker Education</div>
+                        <h3 class="project-title">3D Printing & Design</h3>
+                        <p class="project-description">
+                            Introduced students to 3D modeling and printing using Makerbot printers. Integrated design thinking and rapid prototyping into Computer Science curriculum.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Makerbot</span>
+                            <span class="tech-tag">3D Modeling</span>
+                            <span class="tech-tag">Design Thinking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-image">👨‍🏫</div>
+                    <div class="project-content">
+                        <div class="project-category">Computer Science Education</div>
+                        <h3 class="project-title">CS Curriculum Development</h3>
+                        <p class="project-description">
+                            Developed and taught Computer Science curriculum for middle and high school students in Washington Heights and Bed-Stuy, Brooklyn. Focused on making coding accessible and engaging.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Curriculum Design</span>
+                            <span class="tech-tag">Web Development</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="success"></div>
-        <button type="submit" class="btn btn-default btn-lg">Send Message</button>
-      </form> -->
-      <div class="social">
-        <h4>Find out more on: </h4>
-        <ul>
-          <li><a href="https://github.com/ejbronze">GitHub<i class="fa fa-github"></i></a></li>
-          <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-          <li><a href="https://www.linkedin.com/in/ejaquez/">Linkedin<i class="fa fa-linkedin"></i></a></li>
-          <!-- <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="footer">
-  <div class="container text-center">
-    <div class="fnav">
-      <!-- Add update date -->
-      <p>Edwin Jaquez Updated:01.02.2019</p>
-    </div>
-  </div>
-</div>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content reveal">
+                <div class="section-label">Get In Touch</div>
+                <h2>Let's Build Something Together</h2>
+                <p class="section-description">
+                    Whether you're looking for a developer, educator, or collaborator on your next project, I'd love to hear from you.
+                </p>
+
+                <div class="contact-methods">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <a href="mailto:erjaquez@gmail.com">erjaquez@gmail.com</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💼</div>
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/ejaquez/" target="_blank">Connect with me</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🐙</div>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/ejbronze" target="_blank">Check out my code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/ejbronze" target="_blank" class="social-link">
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="social-link">
+                    <span>LinkedIn</span>
+                </a>
+                <a href="mailto:erjaquez@gmail.com" class="social-link">
+                    <span>Email</span>
+                </a>
+            </div>
+            <p>&copy; 2026 Edwin Jaquez. Built with passion in Queens, NYC.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 100;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                // Filter projects
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
