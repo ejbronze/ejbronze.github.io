@@ -96,6 +96,8 @@
             position: relative;
             min-width: 50px;
             transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .logo .logo-short {
@@ -393,377 +395,11 @@
             transform: translateX(5px);
         }
 
-        .about-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            aspect-ratio: 1;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            opacity: 0.2;
-            z-index: 1;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-filters {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            background: var(--bg-card);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 50px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--accent-primary);
-            color: #ffffff;
-            border-color: var(--accent-primary);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-
-        .carousel-wrapper {
-            overflow: hidden;
-            margin: 0 4rem;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-slide {
-            min-width: 300px;
-            flex-shrink: 0;
-        }
-
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            border: 2px solid var(--accent-primary);
-            color: var(--accent-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .carousel-button:hover {
-            background: var(--accent-primary);
-            color: white;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-button.prev {
-            left: 0;
-        }
-
-        .carousel-button.next {
-            right: 0;
-        }
-
-        .carousel-button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .carousel-button:disabled:hover {
-            background: var(--bg-card);
-            color: var(--accent-primary);
-            transform: translateY(-50%);
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(234, 88, 12, 0.2);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-dot.active {
-            background: var(--accent-primary);
-            width: 30px;
-            border-radius: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .carousel-wrapper {
-                margin: 0 3rem;
-            }
-
-            .carousel-slide {
-                min-width: 260px;
-            }
-
-            .carousel-button {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-primary);
-            box-shadow: 0 20px 40px rgba(234, 88, 12, 0.15);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 180px;
-            background: linear-gradient(135deg, var(--bg-secondary), #e7e5e4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(234, 88, 12, 0.08), rgba(249, 115, 22, 0.08));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-image::before {
-            opacity: 1;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-category {
-            color: var(--accent-primary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            padding: 0.25rem 0.75rem;
-            background: rgba(234, 88, 12, 0.08);
-            border: 1px solid rgba(234, 88, 12, 0.2);
-            border-radius: 50px;
-            font-size: 0.75rem;
-            color: var(--accent-primary);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--accent-primary);
-        }
-
         /* Contact Section */
         .contact-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
-        }
-
-        /* Resume Section */
-        .resume-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .resume-column {
-            background: var(--bg-card);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .resume-column-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            color: var(--text-primary);
-        }
-
-        .resume-item {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .resume-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .resume-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-
-        .resume-job-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .resume-company {
-            color: var(--accent-primary);
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .resume-date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 600;
-            white-space: nowrap;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .resume-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .resume-description li {
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-        }
-
-        .resume-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .resume-skill {
-            padding: 0.5rem 1rem;
-            background: rgba(234, 88, 12, 0.08);
-            border: 1px solid rgba(234, 88, 12, 0.2);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .resume-download {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        @media (max-width: 968px) {
-            .resume-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         .contact-methods {
@@ -804,6 +440,47 @@
             font-weight: 600;
         }
 
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
         /* Footer */
         footer {
             padding: 3rem 0;
@@ -830,8 +507,13 @@
             justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 1.2rem;
             transition: all 0.3s ease;
+        }
+
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
         .social-link:hover {
@@ -845,10 +527,6 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
             }
 
             .skills-grid {
@@ -877,15 +555,13 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">
+            <a href="#" onclick="window.location.reload(); return false;" class="logo">
                 <span class="logo-short"><span class="highlight">E</span><span class="highlight">J</span></span>
                 <span class="logo-full"><span class="highlight">E</span>dwin <span class="highlight">J</span>aquez</span>
-            </div>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="Resume.html">Resume</a></li>
+                <li><a href="resume.html">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -903,8 +579,9 @@
                     Curriculum Developer & <span class="accent-text">Instructional Designer</span> with 10+ years creating technical training programs in computer science, AI, and emerging technologies.
                 </p>
                 <div class="cta-buttons">
-                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
-                    <a href="#education" class="btn btn-primary">Teaching Experience</a>
+                    <a href="resume.html" class="btn btn-primary">View Resume</a>
+                    <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="btn btn-primary">LinkedIn</a>
+                    <a href="https://github.com/ejbronze" target="_blank" class="btn btn-primary">GitHub</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                 </div>
             </div>
@@ -941,276 +618,6 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label">My Work</div>
-                <h2>Featured Projects</h2>
-                <p class="section-description">
-                    A collection of web applications, games, and STEM projects showcasing my technical skills and creative problem-solving.
-                </p>
-            </div>
-
-            <div class="carousel-container">
-                <button class="carousel-button prev" onclick="moveCarousel('portfolio', -1)">‹</button>
-                <div class="carousel-wrapper">
-                    <div class="carousel-track" id="portfolio-carousel">
-                        <div class="carousel-slide">
-                            <div class="project-card" data-category="web">
-                                <div class="project-image">🌐</div>
-                                <div class="project-content">
-                                    <div class="project-category">Web Application</div>
-                                    <h3 class="project-title">WerToGo</h3>
-                                    <p class="project-description">
-                                        A database-driven website that determines outcomes based on user input, featuring dynamic content and interactive features.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">Node.js</span>
-                                        <span class="tech-tag">MySQL</span>
-                                        <span class="tech-tag">Express</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="#" class="project-link">View Live →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card" data-category="web">
-                                <div class="project-image">📚</div>
-                                <div class="project-content">
-                                    <div class="project-category">Web Scraper</div>
-                                    <h3 class="project-title">Google Books Finder</h3>
-                                    <p class="project-description">
-                                        A web scraping application that searches and retrieves book information from Google Books API with a clean, intuitive interface.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">React</span>
-                                        <span class="tech-tag">API Integration</span>
-                                        <span class="tech-tag">MongoDB</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="#" class="project-link">View Live →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card" data-category="web">
-                                <div class="project-image">💼</div>
-                                <div class="project-content">
-                                    <div class="project-category">Full-Stack App</div>
-                                    <h3 class="project-title">Modo Investments</h3>
-                                    <p class="project-description">
-                                        A comprehensive web application for tracking and managing investment portfolios with real-time data visualization.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">Chart.js</span>
-                                        <span class="tech-tag">MySQL</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="#" class="project-link">View Live →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card" data-category="games">
-                                <div class="project-image">🗽</div>
-                                <div class="project-content">
-                                    <div class="project-category">Interactive Game</div>
-                                    <h3 class="project-title">NYC Trivia Game</h3>
-                                    <p class="project-description">
-                                        Test your knowledge of New York City with this engaging trivia game featuring questions about NYC history and culture.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">jQuery</span>
-                                        <span class="tech-tag">CSS3</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="#" class="project-link">Play Game →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card" data-category="games">
-                                <div class="project-image">💎</div>
-                                <div class="project-content">
-                                    <div class="project-category">Web Game</div>
-                                    <h3 class="project-title">Crystal Collector</h3>
-                                    <p class="project-description">
-                                        A dynamic number-guessing game where players collect crystals to match a random target number. Features engaging gameplay mechanics.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">JavaScript</span>
-                                        <span class="tech-tag">HTML5</span>
-                                        <span class="tech-tag">Game Logic</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="#" class="project-link">Play Game →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card" data-category="games">
-                                <div class="project-image">🍔</div>
-                                <div class="project-content">
-                                    <div class="project-category">Full-Stack Game</div>
-                                    <h3 class="project-title">Eat-Da-Burger</h3>
-                                    <p class="project-description">
-                                        A playful database game where users can create, devour, and manage burgers. Demonstrates CRUD operations in an entertaining way.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">Node.js</span>
-                                        <span class="tech-tag">MySQL</span>
-                                        <span class="tech-tag">Handlebars</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="#" class="project-link">Play Game →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card" data-category="web">
-                                <div class="project-image">🏙️</div>
-                                <div class="project-content">
-                                    <div class="project-category">Web Scraper</div>
-                                    <h3 class="project-title">NYYIMBY Scraper</h3>
-                                    <p class="project-description">
-                                        A web scraping application that aggregates NYC real estate and development news from YIMBY, featuring automated content updates.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">Node.js</span>
-                                        <span class="tech-tag">Cheerio</span>
-                                        <span class="tech-tag">MongoDB</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="#" class="project-link">View Live →</a>
-                                        <a href="https://github.com/ejbronze" class="project-link">GitHub →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-button next" onclick="moveCarousel('portfolio', 1)">›</button>
-                <div class="carousel-dots" id="portfolio-dots"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label">Education & Teaching</div>
-                <h2>Inspiring Future Technologists</h2>
-                <p class="section-description">
-                    My journey as a Computer Science educator, empowering students through hands-on STEM learning and robotics competitions.
-                </p>
-            </div>
-
-            <div class="carousel-container">
-                <button class="carousel-button prev" onclick="moveCarousel('education', -1)">‹</button>
-                <div class="carousel-wrapper">
-                    <div class="carousel-track" id="education-carousel">
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="project-image">🤖</div>
-                                <div class="project-content">
-                                    <div class="project-category">Robotics Education</div>
-                                    <h3 class="project-title">FIRST LEGO League Coaching</h3>
-                                    <p class="project-description">
-                                        Coached middle school students in robotics competitions using LEGO EV3, teaching programming, engineering, and teamwork skills. Led teams through design challenges and competitive tournaments.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">LEGO EV3</span>
-                                        <span class="tech-tag">Block Programming</span>
-                                        <span class="tech-tag">STEM Education</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="project-image">💡</div>
-                                <div class="project-content">
-                                    <div class="project-category">Arduino & Electronics</div>
-                                    <h3 class="project-title">LED Arduino Marquee</h3>
-                                    <p class="project-description">
-                                        Custom-built LED display system using Arduino for classroom demonstrations. Students learned about microcontrollers, programming, and electronics through hands-on projects.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">Arduino</span>
-                                        <span class="tech-tag">C++</span>
-                                        <span class="tech-tag">Electronics</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="project-image">🖨️</div>
-                                <div class="project-content">
-                                    <div class="project-category">Maker Education</div>
-                                    <h3 class="project-title">3D Printing & Design</h3>
-                                    <p class="project-description">
-                                        Introduced students to 3D modeling and printing using Makerbot printers. Integrated design thinking and rapid prototyping into Computer Science curriculum.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">Makerbot</span>
-                                        <span class="tech-tag">3D Modeling</span>
-                                        <span class="tech-tag">Design Thinking</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="project-image">👨‍🏫</div>
-                                <div class="project-content">
-                                    <div class="project-category">Computer Science Education</div>
-                                    <h3 class="project-title">CS Curriculum Development</h3>
-                                    <p class="project-description">
-                                        Developed and taught Computer Science curriculum for middle and high school students in Washington Heights and Bed-Stuy, Brooklyn. Focused on making coding accessible and engaging.
-                                    </p>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">Curriculum Design</span>
-                                        <span class="tech-tag">Web Development</span>
-                                        <span class="tech-tag">Python</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-button next" onclick="moveCarousel('education', 1)">›</button>
-                <div class="carousel-dots" id="education-dots"></div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -1221,11 +628,27 @@
                     Whether you're looking for a developer, educator, or collaborator on your next project, I'd love to hear from you.
                 </p>
 
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+
                 <div class="contact-methods">
                     <div class="contact-card">
                         <div class="contact-icon">📧</div>
                         <h3>Email</h3>
-                        <a href="mailto:erjaquez@gmail.com">erjaquez@gmail.com</a>
+                        <a href="/cdn-cgi/l/email-protection#b5d0c7dfd4c4c0d0cff5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="abced9c1cadadeced1ebccc6cac2c785c8c4c6">[email&#160;protected]</span></a>
                     </div>
                     <div class="contact-card">
                         <div class="contact-icon">💼</div>
@@ -1252,7 +675,7 @@
                 <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="social-link">
                     <span>LinkedIn</span>
                 </a>
-                <a href="mailto:erjaquez@gmail.com" class="social-link">
+                <a href="/cdn-cgi/l/email-protection#5732253d362622322d17303a363e3b7934383a" class="social-link">
                     <span>Email</span>
                 </a>
             </div>
@@ -1260,7 +683,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1299,7 +722,7 @@
         
         window.addEventListener('scroll', () => {
             const heroBottom = hero.offsetTop + hero.offsetHeight;
-            const scrollPosition = window.scrollY + 100; // Add small offset
+            const scrollPosition = window.scrollY + 100;
             
             if (scrollPosition > heroBottom) {
                 logo.classList.add('expanded');
@@ -1307,144 +730,6 @@
                 logo.classList.remove('expanded');
             }
         });
-
-        // Portfolio filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const filter = button.getAttribute('data-filter');
-
-                // Filter projects
-                projectCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    
-                    if (filter === 'all' || category === filter) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-
-        // Carousel functionality
-        const carousels = {
-            portfolio: { currentIndex: 0, slidesPerView: 3 },
-            education: { currentIndex: 0, slidesPerView: 3 }
-        };
-
-        function initCarousels() {
-            Object.keys(carousels).forEach(carouselId => {
-                updateCarouselView(carouselId);
-                createDots(carouselId);
-            });
-
-            // Update slides per view on resize
-            window.addEventListener('resize', () => {
-                Object.keys(carousels).forEach(carouselId => {
-                    updateSlidesPerView(carouselId);
-                    updateCarouselView(carouselId);
-                });
-            });
-
-            // Initial setup
-            Object.keys(carousels).forEach(updateSlidesPerView);
-        }
-
-        function updateSlidesPerView(carouselId) {
-            const width = window.innerWidth;
-            if (width < 768) {
-                carousels[carouselId].slidesPerView = 1;
-            } else if (width < 1200) {
-                carousels[carouselId].slidesPerView = 2;
-            } else {
-                carousels[carouselId].slidesPerView = 3;
-            }
-        }
-
-        function moveCarousel(carouselId, direction) {
-            const carousel = carousels[carouselId];
-            const track = document.getElementById(`${carouselId}-carousel`);
-            const slides = track.querySelectorAll('.carousel-slide');
-            const maxIndex = Math.max(0, slides.length - carousel.slidesPerView);
-
-            carousel.currentIndex = Math.max(0, Math.min(maxIndex, carousel.currentIndex + direction));
-            updateCarouselView(carouselId);
-        }
-
-        function updateCarouselView(carouselId) {
-            const carousel = carousels[carouselId];
-            const track = document.getElementById(`${carouselId}-carousel`);
-            const slides = track.querySelectorAll('.carousel-slide');
-            
-            if (slides.length === 0) return;
-
-            const slideWidth = slides[0].offsetWidth;
-            const gap = 32; // 2rem gap
-            const offset = -(carousel.currentIndex * (slideWidth + gap));
-            
-            track.style.transform = `translateX(${offset}px)`;
-
-            // Update buttons
-            const prevBtn = track.closest('.carousel-container').querySelector('.prev');
-            const nextBtn = track.closest('.carousel-container').querySelector('.next');
-            const maxIndex = Math.max(0, slides.length - carousel.slidesPerView);
-
-            prevBtn.disabled = carousel.currentIndex === 0;
-            nextBtn.disabled = carousel.currentIndex >= maxIndex;
-
-            // Update dots
-            updateDots(carouselId);
-        }
-
-        function createDots(carouselId) {
-            const carousel = carousels[carouselId];
-            const track = document.getElementById(`${carouselId}-carousel`);
-            const slides = track.querySelectorAll('.carousel-slide');
-            const dotsContainer = document.getElementById(`${carouselId}-dots`);
-            
-            dotsContainer.innerHTML = '';
-            
-            const numDots = Math.max(1, slides.length - carousel.slidesPerView + 1);
-            
-            for (let i = 0; i < numDots; i++) {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot';
-                dot.onclick = () => {
-                    carousel.currentIndex = i;
-                    updateCarouselView(carouselId);
-                };
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function updateDots(carouselId) {
-            const carousel = carousels[carouselId];
-            const dotsContainer = document.getElementById(`${carouselId}-dots`);
-            const dots = dotsContainer.querySelectorAll('.carousel-dot');
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === carousel.currentIndex);
-            });
-        }
-
-        // Initialize carousels when page loads
-        window.addEventListener('load', initCarousels);
     </script>
 </body>
 </html>
-
