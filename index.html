@@ -433,6 +433,7 @@
 
         .section-header {
             margin-bottom: 4rem;
+            text-align: center;
         }
 
         .section-label {
@@ -459,6 +460,11 @@
         /* About Section */
         .about-content {
             max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            text-align: left;
         }
 
         .about-text p {
@@ -707,7 +713,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#" onclick="window.location.reload(); return false;" class="logo">
+            <a href="#" class="logo">
                 <span class="logo-short"><span class="highlight">E</span><span class="highlight">J</span></span>
                 <span class="logo-full"><span class="highlight">E</span>dwin <span class="highlight">J</span>aquez</span>
             </a>
@@ -1000,6 +1006,58 @@
                     navDropdown.setAttribute('aria-hidden', 'true');
                     navDropdown.classList.remove('open');
                 }
+            });
+        }
+
+        // Reset page to initial appearance when logo clicked
+        const resetToInitialView = () => {
+            // jump to top instantly
+            window.scrollTo(0, 0);
+
+            // reset nav state
+            nav.classList.remove('compact');
+            logo.classList.remove('expanded');
+            if (navToggle) {
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+            if (navDropdown) {
+                navDropdown.setAttribute('aria-hidden', 'true');
+                navDropdown.classList.remove('open');
+            }
+
+            // close any open skill blurbs
+            document.querySelectorAll('.skill-toggle').forEach(btn => {
+                btn.setAttribute('aria-expanded', 'false');
+                const blurb = btn.nextElementSibling;
+                if (blurb && blurb.classList.contains('open')) {
+                    blurb.classList.remove('open');
+                    blurb.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // remove reveal active classes so scroll reveal replays
+            document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
+
+            // restart hero animations by forcing reflow
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.animation = 'none';
+                // force reflow
+                void heroContent.offsetWidth;
+                heroContent.style.animation = '';
+            }
+
+            // small timeout to allow classes to settle, then run reveal check
+            setTimeout(() => {
+                revealOnScroll();
+            }, 60);
+        };
+
+        // Attach click handler to logo
+        if (logo) {
+            logo.addEventListener('click', (e) => {
+                e.preventDefault();
+                resetToInitialView();
             });
         }
 
