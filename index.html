@@ -156,6 +156,79 @@
             width: 100%;
         }
 
+        /* Compact/Toggle Nav (appears after scrolling to About) */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .nav-toggle .hamburger,
+        .nav-toggle .hamburger::before,
+        .nav-toggle .hamburger::after {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            position: relative;
+        }
+
+        .nav-toggle .hamburger::before,
+        .nav-toggle .hamburger::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        .nav-toggle .hamburger::before { top: -6px; }
+        .nav-toggle .hamburger::after { top: 6px; }
+
+        .nav-dropdown {
+            /* Always present for accessibility; visually collapsed when closed */
+            position: absolute;
+            right: 2rem;
+            top: calc(100% + 8px);
+            background: var(--bg-card);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 0.25rem 0.25rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            z-index: 1200;
+            min-width: 160px;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-6px);
+            transition: max-height 260ms cubic-bezier(.2,.9,.2,1),
+                        opacity 200ms ease, transform 220ms cubic-bezier(.2,.9,.2,1);
+        }
+
+        .nav-dropdown.open {
+            max-height: 320px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-dropdown a:hover { background: rgba(0,0,0,0.02); }
+
+        /* When nav gets compact, hide the inline links and show toggle */
+        nav.compact .nav-links { display: none; }
+        nav.compact .nav-toggle { display: block; }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -603,6 +676,11 @@
                 display: none;
             }
 
+            /* Show hamburger toggle on small screens */
+            .nav-toggle {
+                display: block;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -638,6 +716,14 @@
                 <li><a href="resume.html">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-dropdown">
+                <span class="hamburger"></span>
+            </button>
+            <div id="nav-dropdown" class="nav-dropdown" aria-hidden="true">
+                <a href="#about">About</a>
+                <a href="resume.html">Resume</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -850,20 +936,72 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll(); // Initial check
 
-        // Logo expansion on scroll
+        // Logo expansion on scroll and compact nav behavior
         const logo = document.querySelector('.logo');
         const hero = document.querySelector('.hero');
-        
-        window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navDropdown = document.getElementById('nav-dropdown');
+        const aboutSection = document.querySelector('#about');
+
+        const onScrollCompactNav = () => {
             const heroBottom = hero.offsetTop + hero.offsetHeight;
             const scrollPosition = window.scrollY + 100;
-            
+
+            // Logo expansion (existing behavior)
             if (scrollPosition > heroBottom) {
                 logo.classList.add('expanded');
             } else {
                 logo.classList.remove('expanded');
             }
-        });
+
+            // Compact nav when we reach the About section
+            if (aboutSection) {
+                const aboutTop = aboutSection.offsetTop;
+                if (window.scrollY + 80 >= aboutTop) {
+                    nav.classList.add('compact');
+                } else {
+                    nav.classList.remove('compact');
+                    // also ensure dropdown is closed when leaving compact state
+                    if (navToggle) {
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        navDropdown.setAttribute('aria-hidden', 'true');
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('scroll', onScrollCompactNav);
+        onScrollCompactNav();
+
+        // Toggle dropdown when hamburger clicked
+        if (navToggle) {
+            navToggle.addEventListener('click', (e) => {
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', String(!expanded));
+                navDropdown.setAttribute('aria-hidden', String(expanded));
+                // toggle animated open/closed via class so transitions run
+                navDropdown.classList.toggle('open');
+            });
+
+            // Close dropdown on outside click
+            document.addEventListener('click', (e) => {
+                if (!nav.contains(e.target) && nav.classList.contains('compact')) {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navDropdown.setAttribute('aria-hidden', 'true');
+                    navDropdown.classList.remove('open');
+                }
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navDropdown.setAttribute('aria-hidden', 'true');
+                    navDropdown.classList.remove('open');
+                }
+            });
+        }
 
         // Skill blurb toggle behavior (accessible)
         document.querySelectorAll('.skill-toggle').forEach(button => {
