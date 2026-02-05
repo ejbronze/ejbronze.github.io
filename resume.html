@@ -97,6 +97,23 @@
             min-width: 50px;
             transition: all 0.3s ease;
             text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo .logo-short {
+            display: inline;
+        }
+
+        .logo .logo-full {
+            display: none;
+        }
+
+        .logo.expanded .logo-short {
+            display: none;
+        }
+
+        .logo.expanded .logo-full {
+            display: inline;
         }
 
         .logo .highlight {
@@ -139,9 +156,76 @@
             width: 100%;
         }
 
-        .nav-links a.active {
-            color: var(--accent-primary);
+        /* Compact/Toggle Nav */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            position: relative;
         }
+
+        .nav-toggle .hamburger,
+        .nav-toggle .hamburger::before,
+        .nav-toggle .hamburger::after {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            position: relative;
+        }
+
+        .nav-toggle .hamburger::before,
+        .nav-toggle .hamburger::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        .nav-toggle .hamburger::before { top: -6px; }
+        .nav-toggle .hamburger::after { top: 6px; }
+
+        .nav-dropdown {
+            position: absolute;
+            right: 2rem;
+            top: calc(100% + 8px);
+            background: var(--bg-card);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 0.25rem 0.25rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            z-index: 1200;
+            min-width: 160px;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-6px);
+            transition: max-height 260ms cubic-bezier(.2,.9,.2,1),
+                        opacity 200ms ease, transform 220ms cubic-bezier(.2,.9,.2,1);
+        }
+
+        .nav-dropdown.open {
+            max-height: 320px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-dropdown a:hover { background: rgba(0,0,0,0.02); }
+
+        nav.compact .nav-links { display: none; }
+        nav.compact .nav-toggle { display: block; }
 
         /* Resume Page Styles */
         .resume-page {
@@ -337,13 +421,22 @@
     <nav>
         <div class="container">
             <a href="index.html" class="logo">
-                <span class="highlight">E</span><span class="highlight">J</span>
+                <span class="logo-short"><span class="highlight">E</span><span class="highlight">J</span></span>
+                <span class="logo-full"><span class="highlight">E</span>dwin <span class="highlight">J</span>aquez</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html#about">About</a></li>
-                <li><a href="resume.html" class="active">Resume</a></li>
+                <li><a href="resume.html">Resume</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-dropdown">
+                <span class="hamburger"></span>
+            </button>
+            <div id="nav-dropdown" class="nav-dropdown" aria-hidden="true">
+                <a href="index.html#about">About</a>
+                <a href="resume.html">Resume</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -356,7 +449,12 @@
                 <p class="page-description">
                     My professional journey as a curriculum developer, instructional designer, and educator.
                 </p>
-                <a href="Edwin_Jaquez_Resume.pdf" download class="btn btn-primary">Download PDF Resume</a>
+                <div class="page-actions" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="Edwin_Jaquez_Resume.pdf" download class="btn btn-primary">Download PDF Resume</a>
+                    <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="btn btn-primary">LinkedIn</a>
+                    <a href="https://github.com/ejbronze" target="_blank" class="btn btn-primary">GitHub</a>
+                    <a href="index.html#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
             </div>
 
             <div class="resume-grid">
@@ -486,6 +584,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
+            <div class="social-links"></div>
             <p>&copy; 2026 Edwin Jaquez. Built with passion in Queens, NYC.</p>
         </div>
     </footer>

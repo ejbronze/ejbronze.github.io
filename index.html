@@ -239,6 +239,68 @@
             overflow: hidden;
         }
 
+        .scroll-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .scroll-indicator-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid var(--accent-primary);
+            border-bottom: 2px solid var(--accent-primary);
+            transform: rotate(-45deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        .scroll-indicator-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .scroll-indicator-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid var(--accent-primary);
+            border-bottom: 2px solid var(--accent-primary);
+            transform: rotate(-45deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
         .hero-bg-image {
             position: absolute;
             inset: 0;
@@ -758,13 +820,6 @@
                   <span class="tag">Bilingual Programs</span>
                   <span class="tag">Culturally Responsive Pedagogy</span>
                   <span class="tag">Creative Technology</span>
-                </div>
-
-                <div class="cta-buttons">
-                    <a href="resume.html" class="btn btn-primary">View Resume</a>
-                    <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="btn btn-primary">LinkedIn</a>
-                    <a href="https://github.com/ejbronze" target="_blank" class="btn btn-primary">GitHub</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                 </div>
             </div>
         </div>
