@@ -7,414 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #fafaf9;
-            --bg-secondary: #f5f5f4;
-            --bg-card: #ffffff;
-            --accent-primary: #ea580c;
-            --accent-secondary: #f97316;
-            --accent-tertiary: #fb923c;
-            --text-primary: #1c1917;
-            --text-secondary: #57534e;
-            --text-muted: #78716c;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Background Animation */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(234, 88, 12, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(251, 146, 60, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(250, 250, 249, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            z-index: 1000;
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            position: relative;
-            min-width: 50px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .logo .logo-short {
-            display: inline;
-        }
-
-        .logo .logo-full {
-            display: none;
-        }
-
-        .logo.expanded .logo-short {
-            display: none;
-        }
-
-        .logo.expanded .logo-full {
-            display: inline;
-        }
-
-        .logo .highlight {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Compact/Toggle Nav */
-        .nav-toggle {
-            display: none;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .nav-toggle .hamburger,
-        .nav-toggle .hamburger::before,
-        .nav-toggle .hamburger::after {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--text-primary);
-            border-radius: 2px;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            position: relative;
-        }
-
-        .nav-toggle .hamburger::before,
-        .nav-toggle .hamburger::after {
-            content: '';
-            position: absolute;
-            left: 0;
-        }
-
-        .nav-toggle .hamburger::before { top: -6px; }
-        .nav-toggle .hamburger::after { top: 6px; }
-
-        .nav-dropdown {
-            position: absolute;
-            right: 2rem;
-            top: calc(100% + 8px);
-            background: var(--bg-card);
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 12px;
-            padding: 0.25rem 0.25rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            z-index: 1200;
-            min-width: 160px;
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-            transform: translateY(-6px);
-            transition: max-height 260ms cubic-bezier(.2,.9,.2,1),
-                        opacity 200ms ease, transform 220ms cubic-bezier(.2,.9,.2,1);
-        }
-
-        .nav-dropdown.open {
-            max-height: 320px;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .nav-dropdown a {
-            display: block;
-            padding: 0.6rem 1rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .nav-dropdown a:hover { background: rgba(0,0,0,0.02); }
-
-        nav.compact .nav-links { display: none; }
-        nav.compact .nav-toggle { display: block; }
-
-        /* Resume Page Styles */
-        .resume-page {
-            min-height: 100vh;
-            padding-top: 8rem;
-            padding-bottom: 4rem;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            color: var(--accent-primary);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        h1 .highlight {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .page-description {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: #ffffff;
-            box-shadow: 0 10px 30px rgba(234, 88, 12, 0.25);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(234, 88, 12, 0.35);
-        }
-
-        /* Resume Grid */
-        .resume-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .resume-column {
-            background: var(--bg-card);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .resume-column-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            color: var(--text-primary);
-        }
-
-        .resume-item {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .resume-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .resume-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-
-        .resume-job-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .resume-company {
-            color: var(--accent-primary);
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .resume-date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 600;
-            white-space: nowrap;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .resume-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .resume-description li {
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-        }
-
-        .resume-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .resume-skill {
-            padding: 0.5rem 1rem;
-            background: rgba(234, 88, 12, 0.08);
-            border: 1px solid rgba(234, 88, 12, 0.2);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .resume-download {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .resume-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .resume-page {
-                padding-top: 6rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -449,11 +42,14 @@
                 <p class="page-description">
                     My professional journey as a curriculum developer, instructional designer, and educator.
                 </p>
-                <div class="page-actions" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
-                    <a href="Edwin_Jaquez_Resume.pdf" download class="btn btn-primary">Download PDF Resume</a>
-                    <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="btn btn-primary">LinkedIn</a>
-                    <a href="https://github.com/ejbronze" target="_blank" class="btn btn-primary">GitHub</a>
-                    <a href="index.html#contact" class="btn btn-secondary">Get In Touch</a>
+                <div class="page-actions">
+                    <div style="margin-bottom: 1rem; text-align: center;">
+                        <a href="Edwin_Jaquez_Resume.pdf" download class="btn btn-primary">Download PDF Resume</a>
+                    </div>
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="btn btn-social">LinkedIn</a>
+                        <a href="https://github.com/ejbronze" target="_blank" class="btn btn-social">GitHub</a>
+                    </div>
                 </div>
             </div>
 
@@ -588,5 +184,71 @@
             <p>&copy; 2026 Edwin Jaquez. Built with passion in Queens, NYC.</p>
         </div>
     </footer>
+
+    <script>
+        const nav = document.querySelector('nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navDropdown = document.getElementById('nav-dropdown');
+        const logo = document.querySelector('.logo');
+
+        // Compact nav on scroll for resume page
+        const onScrollCompactNav = () => {
+            // Trigger compact nav after scrolling ~150px
+            if (window.scrollY > 150) {
+                nav.classList.add('compact');
+            } else {
+                nav.classList.remove('compact');
+                // also ensure dropdown is closed when leaving compact state
+                if (navToggle) {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navDropdown.setAttribute('aria-hidden', 'true');
+                    navDropdown.classList.remove('open');
+                }
+            }
+        };
+
+        window.addEventListener('scroll', onScrollCompactNav);
+        onScrollCompactNav();
+
+        // Toggle dropdown when hamburger clicked
+        if (navToggle) {
+            navToggle.addEventListener('click', (e) => {
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', String(!expanded));
+                navDropdown.setAttribute('aria-hidden', String(expanded));
+                // toggle animated open/closed via class so transitions run
+                navDropdown.classList.toggle('open');
+            });
+
+            // Close dropdown on outside click
+            document.addEventListener('click', (e) => {
+                if (!nav.contains(e.target) && nav.classList.contains('compact')) {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navDropdown.setAttribute('aria-hidden', 'true');
+                    navDropdown.classList.remove('open');
+                }
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navDropdown.setAttribute('aria-hidden', 'true');
+                    navDropdown.classList.remove('open');
+                }
+            });
+        }
+
+        // Navigation link closing behavior
+        document.querySelectorAll('.nav-dropdown a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navToggle) {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navDropdown.setAttribute('aria-hidden', 'true');
+                    navDropdown.classList.remove('open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
