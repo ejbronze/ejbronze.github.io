@@ -176,13 +176,14 @@
             z-index: 0;
             animation: fadeToBackground 2s ease-out;
         }
-        .hero-tags {
+          .hero-tags {
               display: flex;
               flex-wrap: wrap;
               gap: 0.6rem;
               margin-top: 1.25rem;
-              max-width: 820px;
-        }
+              margin-bottom: 1.5rem;
+              max-width: 1100px;
+          }
             
         .tag {
               display: inline-flex;
@@ -240,6 +241,8 @@
 
         .hero-content {
             animation: fadeInUp 0.8s ease-out both;
+            max-width: 1100px;
+            width: 100%;
         }
 
         @keyframes fadeInUp {
@@ -301,7 +304,7 @@
             font-size: clamp(1.2rem, 3vw, 1.8rem);
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            max-width: 700px;
+            max-width: 1000px;
             animation: fadeInUp 0.8s ease-out both;
         }
 
@@ -809,17 +812,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/ejbronze" target="_blank" class="social-link">
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/ejaquez/" target="_blank" class="social-link">
-                    <span>LinkedIn</span>
-                </a>
-                <a href="/cdn-cgi/l/email-protection#5732253d362622322d17303a363e3b7934383a" class="social-link">
-                    <span>Email</span>
-                </a>
-            </div>
+            <div class="social-links"></div>
             <p>&copy; 2026 Edwin Jaquez. Built with passion in Queens, NYC.</p>
         </div>
     </footer>
